@@ -1,0 +1,11 @@
+
+{% block content %}
+            <p1> incidence forms</p1>
+            <form action='/' method="post" >
+            {% csrf_token %}
+            {{ form2.as_p }}
+            <input type="submit" value="Send">
+            </form>
+{% endblock content %}
+
+

@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Potsdam 3 rooms absolute cold rent without service costs</title>
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="leaflet/leaflet.css" />
+  <style>
+    #map {
+      width: 800;
+      height: 600px;
+    }
+    .legend {
+            color: #555;
+            padding: 12px 16px;
+            font: 12px Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            background: white;
+            background: rgba(255,255,255,0.8);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+        }
+        .legend ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            clear: both;
+        }
+        .legend li {
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+        .legend .min {
+            float: left;
+            padding-bottom: 15px;
+        }
+        .legend .max {
+            float: right;
+        }
+  </style>
+
+
+</head>
+
+<body>
+  <div id="map"></div>
+  <script src="leaflet/leaflet.js"></script>
+  <script src="choropleth.js"></script>
+  <script src='https://npmcdn.com/@turf/turf@3.13.2/turf.min.js'></script>
+
+
+  <script>
+    var map = L.map('map').setView([52.39, 13.06], 12)
+
+    // Add basemap
+    L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map)
+
+    // Add Sampled Point with known 'value'
+    var sampledPoints = {
+      "type": "FeatureCollection",
+      "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+      "features": [
+      { "type": "Feature", "properties": { "field_1": 3, "latitude": 52.395768, "longitude": 13.065812, "price_high": 1480.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.065812, 52.395768 ] } },
+      { "type": "Feature", "properties": { "field_1": 5, "latitude": 52.42388, "longitude": 13.057468, "price_high": 1145.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.057468, 52.42388 ] } },
+      { "type": "Feature", "properties": { "field_1": 6, "latitude": 52.4674, "longitude": 13.021647, "price_high": 975.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.021647, 52.4674 ] } },
+      { "type": "Feature", "properties": { "field_1": 10, "latitude": 52.427715, "longitude": 13.057427, "price_high": 1335.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.057427, 52.427715 ] } },
+      { "type": "Feature", "properties": { "field_1": 11, "latitude": 52.389984, "longitude": 13.09489, "price_high": 1196.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.09489, 52.389984 ] } },
+      { "type": "Feature", "properties": { "field_1": 16, "latitude": 52.402912, "longitude": 13.064117, "price_high": 1285.9, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.064117, 52.402912 ] } },
+      { "type": "Feature", "properties": { "field_1": 18, "latitude": 52.403812, "longitude": 13.067178, "price_high": 1449.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.067178, 52.403812 ] } },
+      { "type": "Feature", "properties": { "field_1": 20, "latitude": 52.39403, "longitude": 13.035976, "price_high": 2050.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.035976, 52.39403 ] } },
+      { "type": "Feature", "properties": { "field_1": 23, "latitude": 52.473938, "longitude": 13.012996, "price_high": 944.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.012996, 52.473938 ] } },
+      { "type": "Feature", "properties": { "field_1": 27, "latitude": 52.395947, "longitude": 13.033538, "price_high": 1135.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.033538, 52.395947 ] } },
+      { "type": "Feature", "properties": { "field_1": 29, "latitude": 52.395336, "longitude": 13.0520735, "price_high": 1199.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.0520735, 52.395336 ] } },
+      { "type": "Feature", "properties": { "field_1": 33, "latitude": 52.391487, "longitude": 13.118491, "price_high": 1244.2, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.118491, 52.391487 ] } },
+      { "type": "Feature", "properties": { "field_1": 35, "latitude": 52.368805, "longitude": 13.137322, "price_high": 480.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.137322, 52.368805 ] } },
+      { "type": "Feature", "properties": { "field_1": 50, "latitude": 52.38964, "longitude": 12.92787, "price_high": 1022.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.92787, 52.38964 ] } },
+      { "type": "Feature", "properties": { "field_1": 52, "latitude": 52.411535, "longitude": 13.079674, "price_high": 1202.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.079674, 52.411535 ] } },
+      { "type": "Feature", "properties": { "field_1": 65, "latitude": 52.40769, "longitude": 13.064463, "price_high": 1450.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.064463, 52.40769 ] } },
+      { "type": "Feature", "properties": { "field_1": 67, "latitude": 52.4675, "longitude": 13.020878, "price_high": 770.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.020878, 52.4675 ] } },
+      { "type": "Feature", "properties": { "field_1": 68, "latitude": 52.402187, "longitude": 13.047489, "price_high": 1052.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.047489, 52.402187 ] } },
+      { "type": "Feature", "properties": { "field_1": 69, "latitude": 52.380631, "longitude": 13.004777, "price_high": 1192.59, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.004777, 52.380631 ] } },
+      { "type": "Feature", "properties": { "field_1": 73, "latitude": 52.385436, "longitude": 13.142771, "price_high": 640.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.142771, 52.385436 ] } },
+      { "type": "Feature", "properties": { "field_1": 75, "latitude": 52.400352, "longitude": 13.054797, "price_high": 1630.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.054797, 52.400352 ] } },
+      { "type": "Feature", "properties": { "field_1": 76, "latitude": 52.401844, "longitude": 13.069806, "price_high": 1208.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.069806, 52.401844 ] } },
+      { "type": "Feature", "properties": { "field_1": 78, "latitude": 52.410244, "longitude": 13.086731, "price_high": 1060.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.086731, 52.410244 ] } },
+      { "type": "Feature", "properties": { "field_1": 79, "latitude": 52.388134, "longitude": 13.028825, "price_high": 2071.68, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.028825, 52.388134 ] } },
+      { "type": "Feature", "properties": { "field_1": 82, "latitude": 52.41624, "longitude": 13.041072, "price_high": 1185.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.041072, 52.41624 ] } },
+      { "type": "Feature", "properties": { "field_1": 85, "latitude": 52.42508, "longitude": 13.055578, "price_high": 1098.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.055578, 52.42508 ] } },
+      { "type": "Feature", "properties": { "field_1": 90, "latitude": 52.390137, "longitude": 13.012428, "price_high": 1192.59, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.012428, 52.390137 ] } },
+      { "type": "Feature", "properties": { "field_1": 92, "latitude": 52.414837, "longitude": 13.063129, "price_high": 1450.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.063129, 52.414837 ] } },
+      { "type": "Feature", "properties": { "field_1": 93, "latitude": 52.391, "longitude": 13.094825, "price_high": 926.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.094825, 52.391 ] } },
+      { "type": "Feature", "properties": { "field_1": 104, "latitude": 52.412415, "longitude": 13.044831, "price_high": 860.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.044831, 52.412415 ] } },
+      { "type": "Feature", "properties": { "field_1": 108, "latitude": 52.360374, "longitude": 12.983459, "price_high": 795.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.983459, 52.360374 ] } },
+      { "type": "Feature", "properties": { "field_1": 109, "latitude": 52.380684, "longitude": 13.015278, "price_high": 1192.59, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.015278, 52.380684 ] } },
+      { "type": "Feature", "properties": { "field_1": 115, "latitude": 52.396374, "longitude": 13.081149, "price_high": 879.93, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.081149, 52.396374 ] } },
+      { "type": "Feature", "properties": { "field_1": 116, "latitude": 52.361736, "longitude": 13.136775, "price_high": 832.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.136775, 52.361736 ] } },
+      { "type": "Feature", "properties": { "field_1": 118, "latitude": 52.391502, "longitude": 13.117999, "price_high": 1214.2, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.117999, 52.391502 ] } },
+      { "type": "Feature", "properties": { "field_1": 120, "latitude": 52.3808, "longitude": 13.14334, "price_high": 1184.88, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.14334, 52.3808 ] } },
+      { "type": "Feature", "properties": { "field_1": 121, "latitude": 52.373013, "longitude": 12.923579, "price_high": 977.72, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.923579, 52.373013 ] } },
+      { "type": "Feature", "properties": { "field_1": 123, "latitude": 52.375607, "longitude": 13.102026, "price_high": 593.94, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.102026, 52.375607 ] } },
+      { "type": "Feature", "properties": { "field_1": 131, "latitude": 52.364721, "longitude": 13.134734, "price_high": 655.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.134734, 52.364721 ] } },
+      { "type": "Feature", "properties": { "field_1": 134, "latitude": 52.3915, "longitude": 13.119088, "price_high": 1353.13, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.119088, 52.3915 ] } },
+      { "type": "Feature", "properties": { "field_1": 139, "latitude": 52.39949, "longitude": 12.922029, "price_high": 1375.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.922029, 52.39949 ] } },
+      { "type": "Feature", "properties": { "field_1": 142, "latitude": 52.37528, "longitude": 12.937833, "price_high": 910.74, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.937833, 52.37528 ] } },
+      { "type": "Feature", "properties": { "field_1": 143, "latitude": 52.395768, "longitude": 13.065812, "price_high": 1112.4, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.065812, 52.395768 ] } },
+      { "type": "Feature", "properties": { "field_1": 144, "latitude": 52.41775, "longitude": 13.035008, "price_high": 1071.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.035008, 52.41775 ] } },
+      { "type": "Feature", "properties": { "field_1": 153, "latitude": 52.395768, "longitude": 13.065812, "price_high": 1461.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.065812, 52.395768 ] } },
+      { "type": "Feature", "properties": { "field_1": 154, "latitude": 52.41775, "longitude": 13.035008, "price_high": 1290.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.035008, 52.41775 ] } },
+      { "type": "Feature", "properties": { "field_1": 156, "latitude": 52.395196, "longitude": 13.096911, "price_high": 1330.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.096911, 52.395196 ] } },
+      { "type": "Feature", "properties": { "field_1": 166, "latitude": 52.392909, "longitude": 13.10744, "price_high": 1408.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.10744, 52.392909 ] } },
+      { "type": "Feature", "properties": { "field_1": 168, "latitude": 52.387695, "longitude": 13.094719, "price_high": 1140.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.094719, 52.387695 ] } },
+      { "type": "Feature", "properties": { "field_1": 181, "latitude": 52.376583, "longitude": 13.087534, "price_high": 563.46, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.087534, 52.376583 ] } },
+      { "type": "Feature", "properties": { "field_1": 182, "latitude": 52.41883, "longitude": 13.055038, "price_high": 1213.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.055038, 52.41883 ] } },
+      { "type": "Feature", "properties": { "field_1": 186, "latitude": 52.378609, "longitude": 12.921682, "price_high": 1055.29, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.921682, 52.378609 ] } },
+      { "type": "Feature", "properties": { "field_1": 188, "latitude": 52.41775, "longitude": 13.035008, "price_high": 944.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.035008, 52.41775 ] } },
+      { "type": "Feature", "properties": { "field_1": 190, "latitude": 52.374168, "longitude": 13.139245, "price_high": 1184.88, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.139245, 52.374168 ] } },
+      { "type": "Feature", "properties": { "field_1": 191, "latitude": 52.410587, "longitude": 12.96465, "price_high": 800.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.96465, 52.410587 ] } },
+      { "type": "Feature", "properties": { "field_1": 197, "latitude": 52.40608, "longitude": 13.070957, "price_high": 1270.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.070957, 52.40608 ] } },
+      { "type": "Feature", "properties": { "field_1": 201, "latitude": 52.411037, "longitude": 13.086054, "price_high": 1202.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.086054, 52.411037 ] } },
+      { "type": "Feature", "properties": { "field_1": 205, "latitude": 52.388313, "longitude": 13.06567, "price_high": 1069.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.06567, 52.388313 ] } },
+      { "type": "Feature", "properties": { "field_1": 208, "latitude": 52.398018, "longitude": 13.094362, "price_high": 1340.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.094362, 52.398018 ] } },
+      { "type": "Feature", "properties": { "field_1": 221, "latitude": 52.37528, "longitude": 12.937833, "price_high": 952.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.937833, 52.37528 ] } },
+      { "type": "Feature", "properties": { "field_1": 222, "latitude": 52.37528, "longitude": 12.937833, "price_high": 920.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.937833, 52.37528 ] } },
+      { "type": "Feature", "properties": { "field_1": 223, "latitude": 52.34327, "longitude": 12.935976, "price_high": 89.61, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.935976, 52.34327 ] } },
+      { "type": "Feature", "properties": { "field_1": 224, "latitude": 52.416857, "longitude": 13.067157, "price_high": 1485.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.067157, 52.416857 ] } },
+      { "type": "Feature", "properties": { "field_1": 225, "latitude": 52.37611, "longitude": 13.143538, "price_high": 644.17, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.143538, 52.37611 ] } },
+      { "type": "Feature", "properties": { "field_1": 228, "latitude": 52.392909, "longitude": 13.10744, "price_high": 875.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.10744, 52.392909 ] } },
+      { "type": "Feature", "properties": { "field_1": 234, "latitude": 52.34428, "longitude": 12.945788, "price_high": 1147.03, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.945788, 52.34428 ] } },
+      { "type": "Feature", "properties": { "field_1": 235, "latitude": 52.416857, "longitude": 13.067157, "price_high": 1030.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.067157, 52.416857 ] } },
+      { "type": "Feature", "properties": { "field_1": 236, "latitude": 52.41775, "longitude": 13.035008, "price_high": 1342.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.035008, 52.41775 ] } },
+      { "type": "Feature", "properties": { "field_1": 240, "latitude": 52.378609, "longitude": 12.921682, "price_high": 874.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.921682, 52.378609 ] } },
+      { "type": "Feature", "properties": { "field_1": 244, "latitude": 52.395768, "longitude": 13.065812, "price_high": 1354.3, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.065812, 52.395768 ] } },
+      { "type": "Feature", "properties": { "field_1": 246, "latitude": 52.395768, "longitude": 13.065812, "price_high": 900.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.065812, 52.395768 ] } },
+      { "type": "Feature", "properties": { "field_1": 249, "latitude": 52.375923, "longitude": 13.138824, "price_high": 650.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.138824, 52.375923 ] } },
+      { "type": "Feature", "properties": { "field_1": 256, "latitude": 52.392909, "longitude": 13.10744, "price_high": 1453.07, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.10744, 52.392909 ] } },
+      { "type": "Feature", "properties": { "field_1": 257, "latitude": 52.426632, "longitude": 13.057324, "price_high": 1360.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.057324, 52.426632 ] } },
+      { "type": "Feature", "properties": { "field_1": 260, "latitude": 52.42362, "longitude": 13.02748, "price_high": 1525.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.02748, 52.42362 ] } },
+      { "type": "Feature", "properties": { "field_1": 267, "latitude": 52.378609, "longitude": 12.921682, "price_high": 1700.4, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.921682, 52.378609 ] } },
+      { "type": "Feature", "properties": { "field_1": 270, "latitude": 52.39425, "longitude": 13.06017, "price_high": 631.53, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.06017, 52.39425 ] } },
+      { "type": "Feature", "properties": { "field_1": 274, "latitude": 52.395267, "longitude": 13.034045, "price_high": 1100.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.034045, 52.395267 ] } },
+      { "type": "Feature", "properties": { "field_1": 280, "latitude": 52.39425, "longitude": 13.06017, "price_high": 613.91, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.06017, 52.39425 ] } },
+      { "type": "Feature", "properties": { "field_1": 281, "latitude": 52.39425, "longitude": 13.06017, "price_high": 641.42, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.06017, 52.39425 ] } },
+      { "type": "Feature", "properties": { "field_1": 283, "latitude": 52.395768, "longitude": 13.065812, "price_high": 2086.4, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.065812, 52.395768 ] } },
+      { "type": "Feature", "properties": { "field_1": 285, "latitude": 52.395768, "longitude": 13.065812, "price_high": 1470.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.065812, 52.395768 ] } },
+      { "type": "Feature", "properties": { "field_1": 291, "latitude": 52.36207, "longitude": 13.086342, "price_high": 620.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.086342, 52.36207 ] } },
+      { "type": "Feature", "properties": { "field_1": 292, "latitude": 52.41775, "longitude": 13.035008, "price_high": 918.62, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.035008, 52.41775 ] } },
+      { "type": "Feature", "properties": { "field_1": 293, "latitude": 52.378902, "longitude": 13.126877, "price_high": 680.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.126877, 52.378902 ] } },
+      { "type": "Feature", "properties": { "field_1": 301, "latitude": 52.39425, "longitude": 13.06017, "price_high": 1201.2, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.06017, 52.39425 ] } },
+      { "type": "Feature", "properties": { "field_1": 303, "latitude": 52.39425, "longitude": 13.06017, "price_high": 1199.8, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.06017, 52.39425 ] } },
+      { "type": "Feature", "properties": { "field_1": 308, "latitude": 52.395768, "longitude": 13.065812, "price_high": 1307.6, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.065812, 52.395768 ] } },
+      { "type": "Feature", "properties": { "field_1": 316, "latitude": 52.361855, "longitude": 13.136008, "price_high": 873.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.136008, 52.361855 ] } },
+      { "type": "Feature", "properties": { "field_1": 321, "latitude": 52.39425, "longitude": 13.06017, "price_high": 1465.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.06017, 52.39425 ] } },
+      { "type": "Feature", "properties": { "field_1": 332, "latitude": 52.392909, "longitude": 13.10744, "price_high": 1414.05, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.10744, 52.392909 ] } },
+      { "type": "Feature", "properties": { "field_1": 337, "latitude": 52.395768, "longitude": 13.065812, "price_high": 1290.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.065812, 52.395768 ] } },
+      { "type": "Feature", "properties": { "field_1": 342, "latitude": 52.4, "longitude": 13.0667, "price_high": 1590.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.0667, 52.4 ] } },
+      { "type": "Feature", "properties": { "field_1": 346, "latitude": 52.39425, "longitude": 13.06017, "price_high": 2000.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.06017, 52.39425 ] } },
+      { "type": "Feature", "properties": { "field_1": 351, "latitude": 52.39425, "longitude": 13.06017, "price_high": 1307.5, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.06017, 52.39425 ] } },
+      { "type": "Feature", "properties": { "field_1": 370, "latitude": 52.39425, "longitude": 13.06017, "price_high": 1162.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.06017, 52.39425 ] } },
+      { "type": "Feature", "properties": { "field_1": 379, "latitude": 52.385436, "longitude": 13.142771, "price_high": 2000.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.142771, 52.385436 ] } },
+      { "type": "Feature", "properties": { "field_1": 382, "latitude": 52.39425, "longitude": 13.06017, "price_high": 785.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.06017, 52.39425 ] } },
+      { "type": "Feature", "properties": { "field_1": 383, "latitude": 52.411893, "longitude": 13.109859, "price_high": 820.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.109859, 52.411893 ] } },
+      { "type": "Feature", "properties": { "field_1": 388, "latitude": 52.39425, "longitude": 13.06017, "price_high": 442.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.06017, 52.39425 ] } },
+      { "type": "Feature", "properties": { "field_1": 389, "latitude": 52.389805, "longitude": 13.027698, "price_high": 480.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.027698, 52.389805 ] } },
+      { "type": "Feature", "properties": { "field_1": 391, "latitude": 52.370222, "longitude": 13.051737, "price_high": 580.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.051737, 52.370222 ] } },
+      { "type": "Feature", "properties": { "field_1": 395, "latitude": 52.39425, "longitude": 13.06017, "price_high": 354.64, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.06017, 52.39425 ] } },
+      { "type": "Feature", "properties": { "field_1": 407, "latitude": 52.39425, "longitude": 13.06017, "price_high": 390.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.06017, 52.39425 ] } },
+      { "type": "Feature", "properties": { "field_1": 410, "latitude": 52.350459, "longitude": 13.103547, "price_high": 1390.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.103547, 52.350459 ] } },
+      { "type": "Feature", "properties": { "field_1": 425, "latitude": 52.3915, "longitude": 13.119088, "price_high": 1238.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.119088, 52.3915 ] } },
+      { "type": "Feature", "properties": { "field_1": 430, "latitude": 52.378609, "longitude": 12.921682, "price_high": 1702.2, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.921682, 52.378609 ] } },
+      { "type": "Feature", "properties": { "field_1": 431, "latitude": 52.39425, "longitude": 13.06017, "price_high": 789.07, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.06017, 52.39425 ] } },
+      { "type": "Feature", "properties": { "field_1": 439, "latitude": 52.374168, "longitude": 13.139245, "price_high": 530.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.139245, 52.374168 ] } },
+      { "type": "Feature", "properties": { "field_1": 442, "latitude": 52.360811, "longitude": 13.090665, "price_high": 1199.11, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.090665, 52.360811 ] } },
+      { "type": "Feature", "properties": { "field_1": 446, "latitude": 52.409294, "longitude": 13.052054, "price_high": 1525.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.052054, 52.409294 ] } },
+      { "type": "Feature", "properties": { "field_1": 447, "latitude": 52.361168, "longitude": 13.133575, "price_high": 883.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.133575, 52.361168 ] } },
+      { "type": "Feature", "properties": { "field_1": 450, "latitude": 52.35764, "longitude": 13.13703, "price_high": 1330.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.13703, 52.35764 ] } },
+      { "type": "Feature", "properties": { "field_1": 452, "latitude": 52.402831, "longitude": 13.066854, "price_high": 1548.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.066854, 52.402831 ] } },
+      { "type": "Feature", "properties": { "field_1": 457, "latitude": 52.41775, "longitude": 13.035008, "price_high": 938.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.035008, 52.41775 ] } },
+      { "type": "Feature", "properties": { "field_1": 459, "latitude": 52.41529, "longitude": 13.137238, "price_high": 1800.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.137238, 52.41529 ] } },
+      { "type": "Feature", "properties": { "field_1": 471, "latitude": 52.402294, "longitude": 13.069463, "price_high": 975.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.069463, 52.402294 ] } },
+      { "type": "Feature", "properties": { "field_1": 472, "latitude": 52.395768, "longitude": 13.065812, "price_high": 2065.8, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.065812, 52.395768 ] } },
+      { "type": "Feature", "properties": { "field_1": 473, "latitude": 52.395768, "longitude": 13.065812, "price_high": 1876.8, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.065812, 52.395768 ] } },
+      { "type": "Feature", "properties": { "field_1": 475, "latitude": 52.392909, "longitude": 13.10744, "price_high": 1647.29, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.10744, 52.392909 ] } },
+      { "type": "Feature", "properties": { "field_1": 485, "latitude": 52.412582, "longitude": 12.9771385, "price_high": 995.3, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.9771385, 52.412582 ] } },
+      { "type": "Feature", "properties": { "field_1": 489, "latitude": 52.389103, "longitude": 13.059308, "price_high": 1265.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.059308, 52.389103 ] } },
+      { "type": "Feature", "properties": { "field_1": 496, "latitude": 52.389984, "longitude": 13.09489, "price_high": 1242.5, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.09489, 52.389984 ] } },
+      { "type": "Feature", "properties": { "field_1": 500, "latitude": 52.41624, "longitude": 13.041072, "price_high": 1229.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.041072, 52.41624 ] } },
+      { "type": "Feature", "properties": { "field_1": 503, "latitude": 52.39465, "longitude": 13.061681, "price_high": 1600.08, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.061681, 52.39465 ] } },
+      { "type": "Feature", "properties": { "field_1": 505, "latitude": 52.397686, "longitude": 13.056618, "price_high": 1190.72, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.056618, 52.397686 ] } },
+      { "type": "Feature", "properties": { "field_1": 506, "latitude": 52.395768, "longitude": 13.065812, "price_high": 1355.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.065812, 52.395768 ] } },
+      { "type": "Feature", "properties": { "field_1": 512, "latitude": 52.361274, "longitude": 12.974756, "price_high": 650.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.974756, 52.361274 ] } },
+      { "type": "Feature", "properties": { "field_1": 513, "latitude": 52.39657, "longitude": 13.080998, "price_high": 840.91, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.080998, 52.39657 ] } },
+      { "type": "Feature", "properties": { "field_1": 519, "latitude": 52.38863, "longitude": 13.096767, "price_high": 1135.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.096767, 52.38863 ] } },
+      { "type": "Feature", "properties": { "field_1": 520, "latitude": 52.379177, "longitude": 12.940381, "price_high": 1685.16, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.940381, 52.379177 ] } },
+      { "type": "Feature", "properties": { "field_1": 521, "latitude": 52.36025, "longitude": 12.981573, "price_high": 863.47, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.981573, 52.36025 ] } },
+      { "type": "Feature", "properties": { "field_1": 523, "latitude": 52.379436, "longitude": 13.122796, "price_high": 514.64, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.122796, 52.379436 ] } },
+      { "type": "Feature", "properties": { "field_1": 527, "latitude": 52.383316, "longitude": 13.136339, "price_high": 532.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.136339, 52.383316 ] } },
+      { "type": "Feature", "properties": { "field_1": 534, "latitude": 52.378609, "longitude": 12.921682, "price_high": 1658.88, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.921682, 52.378609 ] } },
+      { "type": "Feature", "properties": { "field_1": 539, "latitude": 52.378609, "longitude": 12.921682, "price_high": 1900.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.921682, 52.378609 ] } },
+      { "type": "Feature", "properties": { "field_1": 547, "latitude": 52.395768, "longitude": 13.065812, "price_high": 1144.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.065812, 52.395768 ] } },
+      { "type": "Feature", "properties": { "field_1": 548, "latitude": 52.343803, "longitude": 13.107803, "price_high": 893.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.107803, 52.343803 ] } },
+      { "type": "Feature", "properties": { "field_1": 555, "latitude": 52.41529, "longitude": 13.137238, "price_high": 1800.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.137238, 52.41529 ] } },
+      { "type": "Feature", "properties": { "field_1": 561, "latitude": 52.37594, "longitude": 12.93253, "price_high": 1658.2, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.93253, 52.37594 ] } },
+      { "type": "Feature", "properties": { "field_1": 564, "latitude": 52.37594, "longitude": 12.93253, "price_high": 937.93, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.93253, 52.37594 ] } },
+      { "type": "Feature", "properties": { "field_1": 567, "latitude": 52.402831, "longitude": 13.066854, "price_high": 1168.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.066854, 52.402831 ] } },
+      { "type": "Feature", "properties": { "field_1": 569, "latitude": 52.378609, "longitude": 12.921682, "price_high": 937.93, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.921682, 52.378609 ] } },
+      { "type": "Feature", "properties": { "field_1": 573, "latitude": 52.345633, "longitude": 13.107304, "price_high": 1406.5, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.107304, 52.345633 ] } },
+      { "type": "Feature", "properties": { "field_1": 575, "latitude": 52.378609, "longitude": 12.921682, "price_high": 890.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.921682, 52.378609 ] } },
+      { "type": "Feature", "properties": { "field_1": 578, "latitude": 52.37594, "longitude": 12.93253, "price_high": 952.02, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.93253, 52.37594 ] } },
+      { "type": "Feature", "properties": { "field_1": 579, "latitude": 52.37594, "longitude": 12.93253, "price_high": 920.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.93253, 52.37594 ] } },
+      { "type": "Feature", "properties": { "field_1": 580, "latitude": 52.361274, "longitude": 12.974756, "price_high": 1157.15, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.974756, 52.361274 ] } },
+      { "type": "Feature", "properties": { "field_1": 581, "latitude": 52.41592, "longitude": 13.022078, "price_high": 1390.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.022078, 52.41592 ] } },
+      { "type": "Feature", "properties": { "field_1": 586, "latitude": 52.37594, "longitude": 12.93253, "price_high": 722.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.93253, 52.37594 ] } },
+      { "type": "Feature", "properties": { "field_1": 594, "latitude": 52.37594, "longitude": 12.93253, "price_high": 650.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.93253, 52.37594 ] } },
+      { "type": "Feature", "properties": { "field_1": 595, "latitude": 52.37594, "longitude": 12.93253, "price_high": 721.21, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.93253, 52.37594 ] } },
+      { "type": "Feature", "properties": { "field_1": 596, "latitude": 52.37594, "longitude": 12.93253, "price_high": 681.01, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.93253, 52.37594 ] } },
+      { "type": "Feature", "properties": { "field_1": 615, "latitude": 52.42508, "longitude": 13.055578, "price_high": 1127.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.055578, 52.42508 ] } },
+      { "type": "Feature", "properties": { "field_1": 623, "latitude": 52.400738, "longitude": 13.070283, "price_high": 973.28, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.070283, 52.400738 ] } },
+      { "type": "Feature", "properties": { "field_1": 627, "latitude": 52.422016, "longitude": 13.153341, "price_high": 1660.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.153341, 52.422016 ] } },
+      { "type": "Feature", "properties": { "field_1": 628, "latitude": 52.400185, "longitude": 13.109253, "price_high": 1220.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.109253, 52.400185 ] } },
+      { "type": "Feature", "properties": { "field_1": 630, "latitude": 52.5093, "longitude": 13.164855, "price_high": 780.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.164855, 52.5093 ] } },
+      { "type": "Feature", "properties": { "field_1": 636, "latitude": 52.374168, "longitude": 13.139245, "price_high": 1143.59, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.139245, 52.374168 ] } },
+      { "type": "Feature", "properties": { "field_1": 637, "latitude": 52.392909, "longitude": 13.10744, "price_high": 1199.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.10744, 52.392909 ] } },
+      { "type": "Feature", "properties": { "field_1": 644, "latitude": 52.5093, "longitude": 13.164855, "price_high": 432.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.164855, 52.5093 ] } },
+      { "type": "Feature", "properties": { "field_1": 649, "latitude": 52.374168, "longitude": 13.139245, "price_high": 908.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.139245, 52.374168 ] } },
+      { "type": "Feature", "properties": { "field_1": 655, "latitude": 52.378609, "longitude": 12.921682, "price_high": 550.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.921682, 52.378609 ] } },
+      { "type": "Feature", "properties": { "field_1": 657, "latitude": 52.378609, "longitude": 12.921682, "price_high": 602.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.921682, 52.378609 ] } },
+      { "type": "Feature", "properties": { "field_1": 659, "latitude": 52.378609, "longitude": 12.921682, "price_high": 675.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.921682, 52.378609 ] } },
+      { "type": "Feature", "properties": { "field_1": 661, "latitude": 52.5093, "longitude": 13.164855, "price_high": 486.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.164855, 52.5093 ] } },
+      { "type": "Feature", "properties": { "field_1": 665, "latitude": 52.45229, "longitude": 13.131614, "price_high": 1410.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.131614, 52.45229 ] } },
+      { "type": "Feature", "properties": { "field_1": 668, "latitude": 52.39425, "longitude": 13.06017, "price_high": 1050.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.06017, 52.39425 ] } },
+      { "type": "Feature", "properties": { "field_1": 669, "latitude": 52.385436, "longitude": 13.142771, "price_high": 490.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.142771, 52.385436 ] } },
+      { "type": "Feature", "properties": { "field_1": 676, "latitude": 52.46726, "longitude": 13.022101, "price_high": 992.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.022101, 52.46726 ] } },
+      { "type": "Feature", "properties": { "field_1": 679, "latitude": 52.37594, "longitude": 12.93253, "price_high": 950.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.93253, 52.37594 ] } },
+      { "type": "Feature", "properties": { "field_1": 684, "latitude": 52.37594, "longitude": 12.93253, "price_high": 800.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 12.93253, 52.37594 ] } },
+      { "type": "Feature", "properties": { "field_1": 687, "latitude": 52.473938, "longitude": 13.012996, "price_high": 920.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.012996, 52.473938 ] } },
+      { "type": "Feature", "properties": { "field_1": 688, "latitude": 52.473854, "longitude": 13.014933, "price_high": 865.15, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.014933, 52.473854 ] } },
+      { "type": "Feature", "properties": { "field_1": 689, "latitude": 52.369072, "longitude": 13.134314, "price_high": 1142.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.134314, 52.369072 ] } },
+      { "type": "Feature", "properties": { "field_1": 692, "latitude": 52.410027, "longitude": 13.046895, "price_high": 962.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.046895, 52.410027 ] } },
+      { "type": "Feature", "properties": { "field_1": 699, "latitude": 52.452828, "longitude": 13.015496, "price_high": 960.0, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.015496, 52.452828 ] } },
+      { "type": "Feature", "properties": { "field_1": 700, "latitude": 52.473965, "longitude": 13.013715, "price_high": 836.55, "room_numbe": "3" }, "geometry": { "type": "Point", "coordinates": [ 13.013715, 52.473965] } }
+  ]
+};
+
+
+var Grid = turf.idw(sampledPoints,'price_high', 0.3, 0.5,'kilometers');
+
+    L.geoJson(sampledPoints.features, {
+      onEachFeature: function(feature, layer) {
+        layer.bindPopup("Estimated base rent for a three room apartment " + feature.properties.value)
+      }
+    })
+
+
+
+    var choroplethLayer = L.choropleth(Grid, {
+      valueProperty: 'z',
+      colors: ['#4575b4','#91bfdb','#e0f3f8','#ffffbf', '#fee090', '#fc8d59', '#d73027'],
+      steps: 7,
+      mode: 'q',
+      style: {
+        color: '#fff',
+        weight: 0.1,
+        fillOpacity: 0.5
+      },
+      onEachFeature: function(feature, layer) {
+        layer.bindPopup("Estimated base rent in € for a 3 room apartment " + feature.properties.z)
+      }
+    }).addTo(map)
+
+    // Add legend (don't forget to add the CSS from index.html)
+    var legend = L.control({
+      position: 'bottomright'
+    })
+    legend.onAdd = function(map) {
+      var div = L.DomUtil.create('div', 'info legend')
+      var limits = choroplethLayer.options.limits
+      var colors = choroplethLayer.options.colors
+      var labels = []
+      // Add min & max
+      div.innerHTML = '<div class="labels"><div class="min">' + limits[0] + '</div> \
+            <div class="max">' + limits[limits.length - 1] + '</div></div>'
+      limits.forEach(function(limit, index) {
+        labels.push('<li style="background-color: ' + colors[index] + '"></li>')
+      })
+      div.innerHTML += '<ul>' + labels.join('') + '</ul>'
+      return div
+    }
+    legend.addTo(map)
+
+  </script>
+</body>
+
+</html>

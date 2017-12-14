@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load leaflet_tags %}
+
+    <head>
+
+        {% leaflet_js plugins="forms" %}
+       {% leaflet_css plugins="forms" %}
+        <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>livestock app</title>
+        <meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="{% static 'green/css/isotope.css' %}" media="screen" />
+		<link rel="stylesheet" href="{% static 'green/js/fancybox/jquery.fancybox.css' %}" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{% static 'green/css/bootstrap.css' %}">
+		<link rel="stylesheet" href="{% static 'green/css/bootstrap-theme.css' %}">
+		<link href="{% static 'green/css/responsive-slider.css' %}" rel="stylesheet">
+		<link rel="stylesheet" href="{% static 'green/css/animate.css' %}">
+                         <link rel="stylesheet" href="{% static 'green/css/style.css' %}">
+
+
+		<link rel="stylesheet" href="{% static 'green/css/font-awesome.min.css' %}">
+		<!-- skin -->
+		<link rel="stylesheet" href="{% static 'green/skin/default.css' %}">
+    </head>
+
+    <body>
+
+
+	<div class="header">
+	<section id="header" class="appear">
+
+		<div class="navbar navbar inverse navbar-fixed-top" role="navigation" data-0="line-height:100px; height:100px; background-color:rgba(0,0,0,0.3);" data-300="line-height:60px; height:60px; background-color:rgba(0,0,0,1);">
+
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="fa fa-bars color-white"></span>
+					</button>
+					<h1><a class="navbar-brand" href="{% url 'home' %}" data-0="line-height:90px;" data-300="line-height:50px;">Livestock app
+					</a></h1>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
+						<li><a href="#">About</a></li>
+						<li><a href="#">markets</a></li>
+						<li><a href="{% url 'portal' %}">map portal</a></li>
+						 <li><a href="{% url 'charts' %}">statistics</a></li>
+						<li><a href="#">Events</a></li>
+						<li ><a href="/incidence">Report incidence</a></li>
+                                                                              <li><a href="{% url 'maps' %}">livestock density maps</a></li>
+
+						<li><a href="{% url 'login' %}">Login</a></li>
+						<li><a href="/admin">Admin</a></li>
+					</ul>
+				</div>
+			</div>
+
+
+	</section>
+	</div>
+
+                      <section class="featured">
+
+
+    <div id="index">
+            <!-- Responsive slider - START -->
+        <div class="responsive-slider" data-spy="responsive-slider" data-autoplay="true">
+            <div class="slides" data-group="slides">
+                <ul>
+                    <li>
+                        <div class="slide-body" data-group="slide">
+                            <img src="{% static 'green/img/an.jpg' %}" alt="">
+                            <div class="caption header" data-animate="slideAppearUpToDown" data-delay="500" data-length="300">
+                                <h2>Manage livestock information.</h2>
+                                <div class="caption-sub" data-animate="slideAppearDownToUp" data-delay="1200" data-length="300"><h4><span>didicated livestock management system provides data and information..</span></h4></div>
+                                <div class="caption-sub" data-animate="slideAppearLeftToRight" data-delay="800" data-length="300"><h3>liveapp site!</h3></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="slide-body" data-group="slide">
+                            <img src="{% static 'green/img/an4.jpg' %}" alt="">
+                            <div class="caption header" data-animate="slideAppearDownToUp" data-delay="500" data-length="300">
+                                <h2>Get information on poultry.</h2>
+                                <div class="caption-sub" data-animate="slideAppearUpToDown" data-delay="800" data-length="300"><h4><span>Get information on poultry and their density maps in Nyeri County. </span></h4></div>
+                                <div class="caption-sub" data-animate="slideAppearRightToLeft" data-delay="1200" data-length="300"><h3>Nice site!</h3></div>
+                            </div>
+                        </div>
+                    </li>
+                <li>
+              <div class="slide-body" data-group="slide">
+                <img src="{% static 'green/img/an3.jpg' %}" alt="">
+                <div class="caption header" data-animate="slideAppearUpToDown" data-delay="500" data-length="300">
+                  <h2>Get information on cattle.</h2>
+                  <div class="caption-sub" data-animate="slideAppearLeftToRight" data-delay="800" data-length="300"><h4>Get information on poultry and their density maps in Nyeri County..</h4></div>
+                  <div class="caption-sub" data-animate="slideAppearDownToUp" data-delay="1200" data-length="300"><h3><span>Wonderful site!</span></h3></div>
+
+                </div>
+                </div>
+                </li>
+
+            </ul>
+        </div>
+
+        <a class="slider-control left" href="#" data-jump="prev"><i class="fa fa-angle-left fa-2x"></i></a>
+        <a class="slider-control right" href="#" data-jump="next"><i class="fa fa-angle-right fa-2x"></i></a>
+
+
+        </div>
+      <!-- Responsive slider - END -->
+    </div>
+        </section>
+
+
+
+		<div id="content">
+		        {% block content %}
+		        {% endblock %}
+		    </div>
+
+
+		<!-- services -->
+		<section id="services" class="section pad-bot5 bg-white">
+		<div class="container">
+				<div class="row mar-bot5">
+					<div class="col-md-offset-3 col-md-6">
+						<div class="section-header">
+						<div class="wow bounceIn"data-animation-delay="7.8s">
+
+							<h2 class="section-heading animated"  >Our Service</h2>
+
+
+						</div>
+						</div>
+					</div>
+				</div>
+			<div class="row mar-bot40">
+				<div class="col-lg-4" >
+					<div class="wow bounceIn">
+						<div class="align-center">
+
+							<div class="wow rotateIn">
+								<div class="service-col">
+									<div class="service-icon">
+										<figure><i class="fa fa-cog"></i></figure>
+									</div>
+										<h2><a href="#">See events</a></h2>
+										<p>See all events near you.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4" >
+					<div class="align-center">
+						<div class="wow bounceIn">
+
+							<div class="wow rotateIn">
+								<div class="service-col">
+									<div class="service-icon">
+										<figure><i class="fa fa-desktop"></i></figure>
+									</div>
+										<h2><a href="{% url 'maps' %}">map visualization</a></h2>
+										<p>see animal density maps.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4" >
+					<div class="align-center">
+						<div class="wow bounceIn">
+							<div class="service-col">
+								<div class="service-icon">
+									<figure><i class="fa fa-dropbox"></i></figure>
+								</div>
+									<h2><a href="{% url 'charts' %}">See charts</a></h2>
+									<p>View and download charts on livestock incidence diseases</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		</section>
+		<!--/services-->
+
+
+
+
+	<section id="footer" class="section footer">
+		<div class="container">
+			<div class="row animated opacity mar-bot0" data-andown="fadeIn" data-animation="animation">
+				<div class="col-sm-12 align-center">
+                    <ul class="social-network social-circle">
+                        <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
+                        <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+				</div>
+			</div>
+
+			<div class="row align-center copyright">
+					<div class="col-sm-12"><p>Copyright &copy; 2017 deryq- by <a href="#">reactgis@jetbrains</a></p></div>
+
+			</div>
+		</div>
+
+	</section>
+	<p>hi</p>
+
+
+
+
+	<a href="#header" class="scrollup"><i class="fa fa-chevron-up"></i></a>
+
+	<script src="{% static 'green/js/modernizr-2.6.2-respond-1.1.0.min.js' %}"></script>
+	<script src="{% static 'green/js/jquery.js' %}"></script>
+	<script src="{% static 'green/js/jquery.easing.1.3.js' %}"></script>
+           <script src="{% static 'green/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'green/js/jquery.isotope.min.js' %}"></script>
+	<script src="{% static 'green/js/jquery.nicescroll.min.js' %}"></script>
+	<script src="{% static 'green/js/fancybox/jquery.fancybox.pack.js' %}"></script>
+	<script src="{% static 'green/js/jquery.parallax-1.1.3.js' %}"></script>
+	<script src="{% static 'green/js/skrollr.min.js' %}"></script>
+	<script src="{% static 'green/js/jquery.scrollTo-1.4.3.1-min.js' %}"></script>
+	<script src="{% static 'green/js/jquery.localscroll-1.2.7-min.js' %}"></script>
+	<script src="{% static 'green/js/stellar.js' %}"></script>
+	<script src="{% static 'green/js/responsive-slider.js' %}"></script>
+	<script src="{% static 'green/js/jquery.appear.js' %}"></script>
+	<script src="{% static 'green/js/validate.js' %}"></script>
+	<script src="{% static 'green/js/grid.js' %}"></script>
+            <script src="{% static 'green/js/main.js' %}"></script>
+
+             <script >
+  //          $("li").click(function(){
+  //  	 $("#index").hide();
+		// });
+             $("li").click(function(){
+	    $(".header").html("<b>Hello world!</b>");
+	});
+
+ </script>
+
+	</body>
+</html>

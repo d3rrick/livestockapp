@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+    <title>livestock app</title>
+
+     <link rel="stylesheet" href="{% static 'src/css/bootstrap.css' %}">
+      <link rel="stylesheet" href="{% static 'src/css/blog.css' %}">
+     <script src="{% static 'src/bootstrap.min.js' %}"></script>
+      <script src="{% static 'src/jquery-3.2.0.min.js' %}"></script>
+
+
+</head>
+<style>
+    body{
+        padding-top:40px
+    }
+</style>
+<body>
+
+     <!--navbar-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+<!--        <div class="navbar-inner">-->
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+
+                <a id="header" class="pull-left" href="/"><strong><h2>liveapp</h2></strong></a>
+                <div class="nav-collapse collapse pull-right">
+                    <ul class="nav">
+                        <li class="active"><a href="/">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services <i class="icon-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Apply for Services</a></li>
+                                <li><a href="#">Application Status</a></li>
+                                <li><a href="#">Report Incidences</a></li>
+                                <li><a href="#">View Incidences & Events</a></li>
+                                <li><a href="#">Map Portal</a></li>
+                                <li><a href="{% url 'maps' %}">maps</a></li>
+                                <li><a href="{% url 'maps' %}">statistics</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Latest News</a></li>
+                                <li><a href="#">livastock info</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li class="login">
+
+                        <li class="dropdowsn">
+                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome,derick<span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Change Password</a></li>
+                            <li><a href="#">Logout</a></li>
+                          </ul>
+                        </li>
+
+                        <li><a href="#">Register</a></li>
+                        <li><a href="#"><i class="icon-lock"> Login</i></a></li>
+
+                    </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+<!--        </div>-->
+    </nav>
+<!--
+<div class="jumbotron">
+    <div class="container">
+        <h1>Livestock app</h1>
+        <p>an app that will revolutionalize livestock management</p>
+        <div class="btn-group">
+            <a href="#" class="btn btn-lg btn-info">Events</a>
+            <a href="#"s class="btn btn-lg btn-default">portal</a>
+            <a href="#" class="btn btn-lg btn-danger">report incidence</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+<!--
+<h1>welcome to livestock application</h1>
+<p2> vaccination forms</p2>
+<h1><a href="{%url 'portal' %}">livestock portal</h1>
+{% include 'liveapp/incidenceform.html' %}
+-->
+
+
+</body>
+</html>

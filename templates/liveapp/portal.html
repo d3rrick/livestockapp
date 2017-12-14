@@ -1,0 +1,1363 @@
+ <!DOCTYPE html>
+ {% load staticfiles %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Liveapp</title>
+        <link rel="stylesheet" href="{% static 'src/leaflet.css' %}">
+        <link rel="stylesheet" href="{% static 'src/jquery-ui.min.css' %}">
+        <link rel="stylesheet" href="{% static 'src/css/bootstrap.css' %}">
+         <link rel="stylesheet" href="{% static 'src/css/font-awesome.min.css' %}">
+          <link rel="stylesheet" href="{% static 'src/plugins/leaflet.awesome-markers.css' %}">
+        <link rel="stylesheet" href="{% static 'src/plugins/L.Control.Pan.css' %}">
+        <link rel="stylesheet" href="{% static 'src/plugins/L.Control.Zoomslider.css' %}">
+        <link rel="stylesheet" href="{% static 'src/plugins/L.Control.MousePosition.css' %}">
+        <link rel="stylesheet" href="{% static 'src/plugins/L.Control.Sidebar.css' %}">
+        <link rel="stylesheet" href="{% static 'src/plugins/Leaflet.PolylineMeasure.css' %}">
+
+        <link rel="stylesheet" href="{% static 'src/plugins/easy-button.css' %}">
+        <link rel="stylesheet" href="{% static 'src/plugins/leaflet-opencage/src/css/L.Control.OpenCageSearch.css' %}">
+        <link rel="stylesheet" href="{% static 'src/plugins/leaflet-draw/leaflet.draw.css' %}"/>
+        <link rel="stylesheet" href="{% static 'src/plugins/leaflet-styleeditor/css/Leaflet.StyleEditor.css' %}">
+        <link rel="stylesheet" href="{% static 'src/css/font-awesome.min.css' %}"/>
+        <link rel="stylesheet" href="{% static 'src/plugins/MarkerCluster.Default.css' %}"/>
+        <link rel="stylesheet" href="{% static 'src/plugins/MarkerCluster.css' %}"/>
+        <link rel="stylesheet" href="{% static 'src/plugins/routing/dist/leaflet-routing-machine.css' %}"/>
+
+
+
+        <script src="{% static 'src/leaflet-src.js' %}"></script>
+
+        <script src="{% static 'src/jquery-3.2.0.min.js' %}"></script>
+        <script src="{% static 'src/leaflet-corridor.js' %}"></script>
+        <script src="{% static 'src/jquery-ui.min.js' %}"></script>
+        <script src="{% static 'src/choropleth.js' %}"></script>
+
+        <script src="{% static 'src/plugins/L.Control.Pan.js' %}"></script>
+        <script src="{% static 'src/plugins/L.Control.Zoomslider.js' %}"></script>
+        <script src="{% static 'src/plugins/L.Control.MousePosition.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet.awesome-markers.min.js' %}"></script>
+        <script src="{% static 'src/plugins/L.Control.Sidebar.js' %}"></script>
+        <script src="{% static 'src/plugins/Leaflet.PolylineMeasure.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet.ajax.min.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet.geometryutil.js' %}"></script>
+         <script src="{% static 'src/turf.min.js' %}"></script>
+        <script src="{% static 'src/plugins/easy-button.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-opencage/src/js/L.Control.OpenCageSearch.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-providers.js' %}"></script>
+         <script src="{% static 'src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleEditor.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleForms.js' %}"></script>
+        <script src="{% static 'src/plugins/routing/dist/leaflet-routing-machine.js' %}"></script>
+<!--    ***************  Begin Leaflet.Draw-->
+
+        <script src="{% static 'src/plugins/leaflet-draw/Leaflet.draw.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-draw/Leaflet.Draw.Event.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'src/plugins/leaflet-draw/leaflet.draw.css' %}"/>
+
+        <script src="{% static 'src/plugins/leaflet-draw/Toolbar.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-draw/Tooltip.js' %}"></script>
+
+        <script src="{% static 'src/plugins/leaflet-draw/ext/GeometryUtil.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-draw/ext/LatLngUtil.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-draw/ext/LineUtil.Intersect.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-draw/ext/Polygon.Intersect.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-draw/ext/Polyline.Intersect.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-draw/ext/TouchEvents.js' %}"></script>
+
+        <script src="{% static 'src/plugins/leaflet-draw/draw/DrawToolbar.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-draw/draw/handler/Draw.Feature.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-draw/draw/handler/Draw.SimpleShape.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-draw/draw/handler/Draw.Polyline.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-draw/draw/handler/Draw.Circle.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-draw/draw/handler/Draw.Marker.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-draw/draw/handler/Draw.Polygon.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-draw/draw/handler/Draw.Rectangle.js' %}"></script>
+
+
+        <script src="{% static 'src/plugins/leaflet-draw/edit/EditToolbar.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-draw/edit/handler/EditToolbar.Edit.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-draw/edit/handler/EditToolbar.Delete.js' %}"></script>
+
+        <script src="{% static 'src/plugins/leaflet-draw/Control.Draw.js' %}"></script>
+
+        <script src="{% static 'src/plugins/leaflet-draw/edit/handler/Edit.Poly.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-draw/edit/handler/Edit.SimpleShape.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-draw/edit/handler/Edit.Circle.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-draw/edit/handler/Edit.Rectangle.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet-draw/edit/handler/Edit.Marker.js' %}"></script>
+        <script src="{% static 'src/plugins/leaflet.markercluster.js' %}"></script>
+<!--    **************  End of Lealet Draw-->
+
+          <style>
+            #mapdiv {
+                height:100vh;
+            }
+              #divProject{
+                  background-color: beige;
+              }
+               .col-xs-12, .col-xs-6, .col-xs-4{
+                  padding:3px;
+              }
+              .errorMsg{
+                  padding:0;
+                  text-align: center;
+                  background-color: darksalmon;
+              }
+              .btn-default {
+                    background: #0f0f0f;
+                    color: #fff;
+                }
+                img {
+                      position: relative;
+                      top: -3px;
+                      left: -3px;
+                           }
+
+        </style>
+    </head>
+    <body>
+
+
+
+
+
+
+        <div id="side-bar" class="col-md-3">
+
+           <div class="col-xs-6">
+                        <button id='btnhome' class='btn btn-default btn-block'><a href="{% url 'home' %}">home</a></button><br>
+
+                    </div>
+            <div class="col-xs-6">
+                        <button class='btn btn-default btn-block'><a href="{% url 'maps' %}">density maps</a></button><br>
+                    </div>
+
+            <button id='btnLocate' class='btn btn-info btn-block'>closest facility geolocation.</button><br>
+
+
+                <button id="btnShowLegend" class='btn btn-primary btn-block'>Legend Section</button>
+
+                <div id="legend">
+                <h4 class="text-center">toggle legend<i id="btnLinearProjects" class="fa fa-server"></i></h4>
+                <div id="lgndLinearProjectsDetail">
+                      <svg width="100" height="100">
+                          <img src="http://localhost:8000/static/img/legend.png"/>
+                     </svg>
+               </div>
+                </div>
+
+
+            <div id="divProject" class="col-xs-12">
+                <div id="divProjectLabel" class="text-center col-xs-12">
+                    <h4 id="lblProject">Query data</h4>
+                </div>
+                <div id="divProjectError" class="errorMsg col-xs-12"></div>
+                <div id="divFindProject" class="form-group has-error">
+                    <div class="col-xs-6">
+                        <input type="text" id="txtFindProject" class="form-control" placeholder="Project ID">
+                    </div>
+
+                    <div class="col-xs-6">
+                        <button id="btnFindProject" class="btn btn-primary btn-block" disabled>Query data</button>
+                    </div>
+                </div>
+                <div class="" id="divProjectData"></div>
+            </div>
+
+
+            <div id="divPopulation" class="col-xs-12">
+                <div id="divPopulationLabel" class="text-center col-xs-12">
+                    <h4 id="lblPopulation">Population</h4>
+                </div>
+                <div id="divPopulationError" class="errorMsg col-xs-12"></div>
+
+                <div id="divFindPopulation" class="form-group has-error">
+                    <div class="col-xs-6">
+                        <input type="text" id="txtFindPoulation" class="form-control" placeholder="Population ID">
+                    </div>
+                    <div class="col-xs-6">
+                        <button id="btnFindPopulatioin" class="btn btn-primary btn-block" disabled>find population</button>
+                    </div>
+                </div>
+                <div id="divFilterPopulation" class="col-xs-12">
+                    <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltPopulation' value='ALL' checked> All
+                    </div>
+                     <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltPopulation' value='Cattle' > Cattle
+                    </div>
+                     <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltPopulation' value='Goat' > Goat
+                    </div>
+                     <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltPopulation' value='Poultly' > Poultly
+                    </div>
+                      <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltPopulation' value='mixed' > mixed
+                    </div>
+
+                </div>
+                <div class="" id="divPopulationData"></div>
+            </div>
+
+
+            <div id="divFacility" class="col-xs-12">
+                <div id="divFacilityLabel" class="text-center col-xs-12">
+                    <h4 id="lblFacility">Facilities</h4>
+                </div>
+                <div id="divFacilityError" class="errorMsg col-xs-12"></div>
+                <div id="divFindFacility" class="form-group has-error">
+                    <div class="col-xs-6">
+                        <input type="text" id="txtFindFacility" class="form-control" placeholder="Facility ID">
+                    </div>
+                    <div class="col-xs-6">
+                        <button id="btnFindFacility" class="btn btn-primary btn-block" disabled>Find Facilities</button>
+                    </div>
+                </div>
+                <div id="divFilterFacility" class="col-xs-12">
+                    <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltFacility' value='ALL' checked> All
+                    </div>
+                     <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltFacility' value='cattle dip' > cattle dip
+                    </div>
+                     <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltFacility' value='milk collection centre' > milk collection centre
+                    </div>
+                     <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltFacility' value='slaughter house' > slaughter house
+                    </div>
+                      <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltFacility' value='Biogas digester' > Biogas digester
+                    </div>
+                    <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltFacility' value='training center' > training center
+                    </div>
+                    <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltFacility' value='Artificial insemination'> Artificial insemination
+                    </div>
+                </div>
+                <div class="" id="divFacilityData"></div>
+            </div>
+
+
+            <div id="divCorridor" class="col-xs-12">
+                <div id="divCorridorLabel" class="text-center col-xs-12">
+                    <h4 id="lblCorridor">Corridors</h4>
+                </div>
+                <div id="divCorridorError" class="errorMsg col-xs-12"></div>
+                <div id="divFindCorridor" class="form-group has-error">
+                    <div class="col-xs-6">
+                        <input type="text" id="txtFindCorridor" class="form-control" placeholder="Corridor ID">
+                    </div>
+                    <div class="col-xs-6">
+                        <button id="btnFindCorridor" class="btn btn-primary btn-block" >Find Corridors</button>
+                    </div>
+                </div>
+                <div id="divFilterCorridor" class="col-xs-12">
+                    <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltCorridor' value='ALL' checked> All
+                    </div>
+                     <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltCorridor' value='active' > active
+                    </div>
+                     <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltCorridor' value='dormant' > dormant
+                    </div>
+                     <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltCorridor' value='other' > other
+                    </div>
+
+                </div>
+                <div class="" id="divCorridorData"></div>
+            </div>
+
+
+            <div id="divEvent" class="col-xs-12">
+                <div id="divEventLabel" class="text-center col-xs-12">
+                    <h4 id="lblEvent">Events</h4>
+                </div>
+                <div id="divEventError" class="errorMsg col-xs-12"></div>
+                <div id="divFindEvent" class="form-group has-error">
+                    <div class="col-xs-6">
+                        <input type="text" id="txtFindEvent" class="form-control" placeholder="Event ID">
+                    </div>
+                    <div class="col-xs-6">
+                        <button id="btnFindEvent" class="btn btn-primary btn-block" disabled>Find Events</button>
+                    </div>
+                </div>
+                <div id="divFilterEvent" class="col-xs-12">
+                    <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltEvent' value='ALL' checked> All
+                    </div>
+                     <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltEvent' value='vaccination' > vaccination
+                    </div>
+                     <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltEvent' value='Seminar' > Seminar
+                    </div>
+                     <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltEvent' value='Road Show' > Road Show
+                    </div>
+                      <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltEvent' value='Annual GM'> Annual GM
+                    </div>
+                      <div id="class" class="col-xs-4">
+                        <input type="radio" name='fltEvent' value='other' >other
+                    </div>
+
+                </div>
+                <div class="" id="divEventData"></div>
+            </div>
+
+
+
+
+            <div id="divIncidence" class="col-xs-12">
+                <div id="divIncidenceLabel" class="text-center col-xs-12">
+                    <h4 id="lblIncidence">Incidences</h4>
+                </div>
+                <div id="divIncidenceError" class="errorMsg col-xs-12"></div>
+                <div id="divFindIncidence" class="form-group has-error">
+                    <div class="col-xs-6">
+                        <input type="text" id="txtFindIncidence" class="form-control" placeholder="Incidence ID">
+                    </div>
+                    <div class="col-xs-6">
+                        <button id="btnFindIncidence" class="btn btn-primary btn-block" disabled>Find Incidences</button>
+                    </div>
+                </div>
+                <div class="" id="divIncidenceData"></div>
+            </div>
+
+                <div id="divNotify" class="col-xs-12">
+                <div id="divNotifyLabel" class="text-center col-xs-12">
+                    <h4 id="lblIncidence">Notifications</h4>
+                </div>
+
+                <div id="divFindIncidence" class="form-group has-error">
+                    <div class="col-xs-6">
+                        <input type="text" id="incidid" class="form-control" placeholder="Incidence ID">
+                    </div>
+                    <div class="col-xs-6">
+                        <button id="findincid" class="btn btn-primary btn-block">Enter</button>
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="text" id="bufferradius" class="form-control" placeholder="Buffer Radius in km">
+                    </div>
+                    <div class="col-xs-6">
+                        <button id="bufferbtn" class="btn btn-primary btn-block">Buffer</button>
+                    </div>
+
+                    <div class="col-xs-9">
+                        <button id="sendsms" class="btn btn-success btn-block">Send Notification</button>
+                    </div>
+
+
+
+
+                </div>
+                <div class="" id="divIncidenceData"></div>
+            </div>
+
+        </div>
+
+        <div id="mapdiv" class="col-md-12"></div>
+
+           <script>
+            var mymap;
+            var lyrOSM;
+            var lyrImagery;
+            var lyrTopo;
+            var lyrWaterColor;
+            var lyrOutdoors;
+            var lyrPoly;
+            var lyrEaglesNest;
+            var lyrSearch;
+
+            var lyrIncidenceBuffer;
+            var jsnIncidenceBuffer;
+            var points = [];
+            var ptsWithin;
+
+            var lyrMarkerCluster;
+            var plyParks;
+            var plnBikeRoute;
+            var fgpChapultepec;
+            var drawnItems;
+            var mrkCurrentLocation;
+            var popZocalo;
+            var ctlAttribute;
+            var ctlScale;
+            var ctlPan;
+            var ctlZoomslider;
+            var ctlMouseposition;
+            var ctlMeasure;
+            var ctlEasybutton;
+            var ctlSidebar;
+            var ctlSearch;
+            var ctlLayers;
+            var ctlStyle;
+            var ctlRouting;
+
+            var ctlDraw;
+            var objBasemaps;
+            var ObjOverlays;
+            var roomPoint;
+
+//            *********datasets variables****************
+
+            var lyrIncidences;
+            var lyrMarkets;
+            var lyrCorridors;
+            var lyrEvents;
+            var lyrFacilities;
+            var lyrVaccines;
+            var lyrManure;
+            var lyrPopulation;
+            var lyrCattle;
+            var lyrGoat;
+            var lyrSheep;
+            var lyrPoultry;
+            var lyrSubcounties;
+            var lyrTowns;
+            var lyrColli;
+
+            var arCollidorIDs = [];
+
+            var arPopulationIDs = [];
+            var arCattleIDs = [];
+            var arGoatIDs = [];
+            var arSheepIDs = [];
+            var arPoultryIDs = [];
+
+
+
+            var arFacilityIDs = [];
+            var arEventIDs = [];
+            var arCollidorIDs = [];
+            var buffered;
+
+            var searchWithin;
+            var searched;
+            var ptsWithin;
+
+
+            var mypoints;
+             var finpoints;
+            var Grid;
+            var choroplethLayer;
+            var legend;
+
+            var buffered_data = [];
+            var incidid;
+            var bufferval;
+            var eachIncid;
+            // var mytin;
+
+            var icnCow;
+            var icnLAMbird;
+            var icngoat;
+            var icnsheep;
+            var icnmkt;
+            var icnincidence;
+            var icnfacility;
+            var icnevent;
+
+
+
+            $(document).ready(function(){
+
+//                **********map initialization *************
+
+
+                mymap = L.map('mapdiv', {center:[-0.3978268, 36.9612328], zoom:16, zoomControl:false, attributionControl:false});
+
+
+                ctlStyle = L.control.styleEditor({position:'topright'}).addTo(mymap);
+                ctlPan = L.control.pan().addTo(mymap);
+                ctlZoomslider = L.control.zoomslider({position:'topright'}).addTo(mymap);
+                ctlMeasure = L.control.polylineMeasure().addTo(mymap);
+                ctlSidebar = L.control.sidebar('side-bar').addTo(mymap);
+                ctlEasybutton = L.easyButton('glyphicon-transfer', function(){
+                ctlSidebar.toggle();
+                }).addTo(mymap);
+                ctlSearch = L.Control.openCageSearch({ limit:10}).addTo(mymap);
+                ctlAttribute = L.control.attribution({position:'bottomleft'}).addTo(mymap);
+                ctlAttribute.addAttribution('OSM');
+                ctlAttribute.addAttribution('&copy; <a href="http://reactgis"</a>');
+                ctlScale = L.control.scale({position:'bottomleft', metric:false, maxWidth:200}).addTo(mymap);
+                ctlMouseposition = L.control.mousePosition().addTo(mymap);
+
+
+                // **********************************icons**************
+                // icnCow =  L.AwesomeMarkers.icon({icon:'tree-conifer', markerColor:'green'});
+                    icnCow  = L.icon({iconUrl:'http://localhost:8000/static/img/cow.svg', iconSize:[40,40], iconAnchor:[20,24]});
+                // icnLAMbird = L.AwesomeMarkers.icon({icon:'twitter', markerColor:'green', iconColor:'#FF0000', prefix:'fa', spin:true});
+
+                icnLAMbird = L.icon({iconUrl:'http://localhost:8000/static/img/chicken.svg', iconSize:[40,40], iconAnchor:[20,24]});
+                // icngoat = L.AwesomeMarkers.icon({icon:'tree-conifer', markerColor:'green'});
+                icngoat  = L.icon({iconUrl:'http://localhost:8000/static/img/goat.svg', iconSize:[40,40], iconAnchor:[20,24]});
+                icnincidence = L.icon({iconUrl:'http://localhost:8000/static/img/incidence.svg', iconSize:[40,40], iconAnchor:[20,24]});
+
+
+                // icnsheep = L.AwesomeMarkers.icon({icon:'tree-conifer', markerColor:'green'});
+
+                  icnsheep  = L.icon({iconUrl:'http://localhost:8000/static/img/sheep.svg', iconSize:[40,40], iconAnchor:[20,24]});
+                icnmkt =  L.icon({iconUrl:'http://localhost:8000/static/img/market.svg', iconSize:[40,40], iconAnchor:[20,24]});
+
+                icnfacility = L.icon({iconUrl:'http://localhost:8000/static/img/home.svg', iconSize:[40,40], iconAnchor:[20,24]});
+                icnevent =  L.icon({iconUrl:'http://localhost:8000/static/img/events.svg', iconSize:[40,40], iconAnchor:[20,24]});
+
+
+
+
+
+
+// *************layer initialization *************
+
+                lyrOSM = L.tileLayer.provider('OpenStreetMap.Mapnik');
+                lyrImagery = L.tileLayer.provider('Esri.WorldImagery');
+                lyrTopo = L.tileLayer.provider('OpenTopoMap');
+                lyrWaterColor = L.tileLayer.provider('Stamen.Watercolor');
+                lyrOutdoors = L.tileLayer.provider('Thunderforest.Outdoors');
+                mymap.addLayer(lyrOSM);
+
+
+//    **********************overlay layer control ************
+
+                objBasemaps = {
+                    "Open Street Maps" : lyrOSM,
+                    "Topo Map" : lyrTopo,
+                    "Imagery" : lyrImagery,
+                    "Outdoors" : lyrOutdoors,
+                    "Watercolor" : lyrWaterColor
+                  };
+//********************** overlay layers*******************************
+                drawnItems = new L.FeatureGroup();
+                drawnItems.addTo(mymap);
+
+                lyrMarkerCluster =L.markerClusterGroup();
+
+
+                lyrIncidenceBuffer = L.featureGroup();
+                lyrIncidences = L.geoJSON.ajax('http://localhost:8000/incidences_data',
+                {pointToLayer:returnIncidenceMarker}).addTo(mymap);
+
+// http://172.16.104.126:9000/population_data
+                lyrVaccines = L.geoJSON.ajax('http://localhost:8000/vaccines_data').addTo(mymap);
+
+                lyrManure = L.geoJSON.ajax('http://localhost:8000/manure_data').addTo(mymap);
+
+                // lyrPopulation = L.geoJSON.ajax('http://localhost:8000/population_data', {pointToLayer:returnPopulationMarker,filter:filterPopulation}).addTo(mymap);
+
+                lyrCattle = L.geoJSON.ajax('http://localhost:8000/cattle_data', {pointToLayer:returnCattleMarker}).addTo(mymap);
+                lyrCattle.on('data:loaded', function(){
+                    lyrCattle.addTo(mymap)
+                });
+
+
+
+                lyrSheep = L.geoJSON.ajax('http://localhost:8000/sheep_data', {pointToLayer:returnSheepMarker}).addTo(mymap);
+                lyrGoat = L.geoJSON.ajax('http://localhost:8000/goat_data', {pointToLayer:returnGoatMarker}).addTo(mymap);
+                lyrPoultry = L.geoJSON.ajax('http://localhost:8000/poultry_data',{
+                    pointToLayer:returnPoultryMarker}).addTo(mymap);
+
+
+                lyrEvents = L.geoJSON.ajax('http://localhost:8000/events_data', {pointToLayer:returnEventMarker,filter:filterEvent}).addTo(mymap);
+
+
+                lyrFacilities = L.geoJSON.ajax('http://localhost:8000/facilities_data', {pointToLayer:returnFacilityMarker,filter:filterFacility}).addTo(mymap);
+
+                lyrMarkets = L.geoJSON.ajax('http://localhost:8000/markets_data',{pointToLayer:returnMarketMarker}).addTo(mymap);
+
+
+                lyrCorridors = L.geoJSON.ajax('http://localhost:8000/corridors',{style:styleCorridors,onEachFeature: processCorridors, filter: filterCorridor}).addTo(mymap);
+
+
+                lyrSubcounties = L.geoJSON.ajax('http://localhost:8000/subcounties_data',{style : stlSubcounties}).addTo(mymap);
+
+                lyrTowns = L.geoJSON.ajax('http://localhost:8000/towns_data',{pointToLayer: returnTownMarker});
+                // console.log(lyrTowns);
+                //
+                // mypoints = turf.random('points', 30, {bbox: [50, 30, 70, 50]});
+                // for (var i = 0; i < mypoints.features.length; i++) {
+                //       mypoints.features[i].properties.z = ~~(Math.random() * 9);
+                //     }
+                // mytin = turf.tin(mypoints, 'z');
+                // console.log(mytin);
+
+
+
+
+
+ // **************overlays hamymndlers*****************************
+
+                  ObjOverlays = {
+                    "sub-counties" : lyrSubcounties,
+                    "towns" : lyrMarkerCluster,
+                    "corridors" : lyrCorridors,
+                    "incidences" : lyrIncidences,
+                    "Vaccines" : lyrVaccines,
+
+                    "facilities" : lyrFacilities,
+                    "events" : lyrEvents,
+                    "markets" : lyrMarkets,
+                    "markets" : lyrMarkets,
+                    "cattle" : lyrCattle,
+                    "goats" : lyrGoat,
+                    "sheep" : lyrSheep,
+                    "poultry" : lyrPoultry,
+                    "drawn items" : drawnItems
+
+//
+                  };
+//***************layer control************
+
+              ctlLayers = L.control.layers(objBasemaps, ObjOverlays).addTo(mymap);
+              // ctlRouting = L.Routing.control({waypoints:[L.latLng(-0.3978268, 36.9612328),L.latLng(-0.378268, 36.7612328)], router: L.Routing.mapbox('pk.eyJ1IjoiZGVyeSIsImEiOiJjaWY5anJyN3YwMDI5dGNseHoyZzM4Z3R4In0.dToOXYIZ30LH_7VtFbKW4A')}).addTo(mymap);
+
+//
+
+//************** draw controls *****************
+
+                ctlDraw = new L.Control.Draw({
+                    draw : {
+                        polyline: false,
+                        polygon: false,
+                        rectangle: false,
+                        circle:false
+                    },
+                    edit:{
+                        featureGroup: drawnItems,
+                        remove: true
+                    }
+
+                });
+                ctlDraw.addTo(mymap);
+
+
+
+
+// ****************location events **********
+
+                mymap.on('locationfound', function(e) {
+                    // console.log(e);
+                    if (mrkCurrentLocation) {
+                        mrkCurrentLocation.remove();
+                    }
+                    mrkCurrentLocation = L.circle(e.latlng, {radius:e.accuracy/2}).addTo(mymap);
+                    mymap.setView(e.latlng, 14);
+
+
+                            var llRef = e.layer.getLatLng();
+                            var strTable = "<table class='table table-hover'>";
+                            strTable += "<tr><th>Constraint</th><th>ID</th><th>Type</th><th>Distance</th><th>Direction</th></tr>";
+
+                            // var nrCorridors = returnClosestlayer(lyrCorridors, llRef);
+                            // strTable += "<tr><td>Corridor</td><td>"+nrCorridors.att.status+"</td><td>"+nrCorridors.att.animal+"</td><td>"+nrCorridors.distance.toFixed(0)+" m</td><td>"+nrCorridor.bearing.toFixed(0)+"</td></tr>";
+
+                            var nrFacility = returnClosestlayer(lyrFacilities, llRef);
+                            strTable += "<tr><td>Facility</td><td>"+nrFacility.att.status+"</td><td>"+nrFacility.att.owner+"</td><td>"+nrFacility.distance.toFixed(0)+" m</td><td>"+nrFacility.bearing.toFixed(0)+"</td></tr>";
+
+                           var nrMarket = returnClosestlayer(lyrMarkets, llRef);
+                           strTable += "<tr><td>Markets</td><td>"+nrMarket.att.status+"</td><td>"+nrMarket.att.animal+"</td><td>"+nrMarket.distance.toFixed(0)+" m</td><td>"+nrMarket.bearing.toFixed(0)+"</td></tr>";
+
+                            // var nrPopulation = returnClosestlayer(lyrPopulation, llRef);
+                            // strTable += "<tr><td>Population</td><td>"+nrPopulation.att.status+"</td><td>"+nrPopulation.att.animal+"</td><td>"+nrPopulation.distance.toFixed(0)+" m</td><td>"+nrPopulation.bearing.toFixed(0)+"</td></tr>";
+            //
+                            var nrEvent = returnClosestlayer(lyrEvents, llRef);
+                            strTable += "<tr><td>Event</td><td>"+nrEvent.att.name+"</td><td>"+nrEvent.att.name+"</td><td>"+nrEvent.distance.toFixed(0)+" m</td><td>"+nrEvent.bearing.toFixed(0)+"</td></tr>";
+            //
+                           var nrIncidence = returnClosestlayer(lyrIncidences, llRef);
+                           strTable += "<tr><td>Incidence</td><td>"+nrIncidence.att.status+"</td><td>"+nrIncidence.att.animal+"</td><td>"+nrIncidence.distance.toFixed(0)+" m</td><td>"+nrIncidence.bearing.toFixed(0)+"</td></tr>";
+
+                           var nrCattle = returnClosestlayer(lyrCattle, llRef);
+                           strTable += "<tr><td>Cattle farm</td><td>"+nrCattle.att.id+"</td><td>"+nrCattle.att.breed+"</td><td>"+nrCattle.distance.toFixed(0)+" m</td><td>"+nrCattle.bearing.toFixed(0)+"</td></tr>";
+
+                           var nrPoultry = returnClosestlayer(lyrCattle, llRef);
+                           strTable += "<tr><td>Poultry farm</td><td>"+nrPoultry.att.id+"</td><td>"+nrPoultry.att.breed+"</td><td>"+nrPoultry.distance.toFixed(0)+" m</td><td>"+nrPoultry.bearing.toFixed(0)+"</td></tr>";
+
+                            strTable += "</table>";
+
+                            mrkCurrentLocation.addLayer(e.layer.bindPopup(strTable,{maxWidth:400}));
+
+
+                });
+
+                mymap.on('locationerror', function(e) {
+                    // console.log(e);
+                    alert("Location was not found");
+                })
+
+
+//***********************map events *****************
+
+             mymap.on('draw:created', function(e){
+                var llRef = e.layer.getLatLng();
+                var strTable = "<table class='table table-hover'>";
+                strTable += "<tr><th>Constraint</th><th>ID</th><th>Type</th><th>Distance</th><th>Direction</th></tr>";
+
+                // var nrCorridors = returnClosestlayer(lyrCorridors, llRef);
+                // strTable += "<tr><td>Corridor</td><td>"+nrCorridors.att.status+"</td><td>"+nrCorridors.att.animal+"</td><td>"+nrCorridors.distance.toFixed(0)+" m</td><td>"+nrCorridor.bearing.toFixed(0)+"</td></tr>";
+
+                var nrFacility = returnClosestlayer(lyrFacilities, llRef);
+                strTable += "<tr><td>Facility</td><td>"+nrFacility.att.status+"</td><td>"+nrFacility.att.owner+"</td><td>"+nrFacility.distance.toFixed(0)+" m</td><td>"+nrFacility.bearing.toFixed(0)+"</td></tr>";
+
+               var nrMarket = returnClosestlayer(lyrMarkets, llRef);
+               strTable += "<tr><td>Markets</td><td>"+nrMarket.att.status+"</td><td>"+nrMarket.att.animal+"</td><td>"+nrMarket.distance.toFixed(0)+" m</td><td>"+nrMarket.bearing.toFixed(0)+"</td></tr>";
+
+                // var nrPopulation = returnClosestlayer(lyrPopulation, llRef);
+                // strTable += "<tr><td>Population</td><td>"+nrPopulation.att.status+"</td><td>"+nrPopulation.att.animal+"</td><td>"+nrPopulation.distance.toFixed(0)+" m</td><td>"+nrPopulation.bearing.toFixed(0)+"</td></tr>";
+//
+                var nrEvent = returnClosestlayer(lyrEvents, llRef);
+                strTable += "<tr><td>Event</td><td>"+nrEvent.att.name+"</td><td>"+nrEvent.att.name+"</td><td>"+nrEvent.distance.toFixed(0)+" m</td><td>"+nrEvent.bearing.toFixed(0)+"</td></tr>";
+//
+               var nrIncidence = returnClosestlayer(lyrIncidences, llRef);
+               strTable += "<tr><td>Incidence</td><td>"+nrIncidence.att.status+"</td><td>"+nrIncidence.att.animal+"</td><td>"+nrIncidence.distance.toFixed(0)+" m</td><td>"+nrIncidence.bearing.toFixed(0)+"</td></tr>";
+
+               var nrCattle = returnClosestlayer(lyrCattle, llRef);
+               strTable += "<tr><td>Cattle farm</td><td>"+nrCattle.att.id+"</td><td>"+nrCattle.att.breed+"</td><td>"+nrCattle.distance.toFixed(0)+" m</td><td>"+nrCattle.bearing.toFixed(0)+"</td></tr>";
+
+               var nrPoultry = returnClosestlayer(lyrCattle, llRef);
+               strTable += "<tr><td>Poultry farm</td><td>"+nrPoultry.att.id+"</td><td>"+nrPoultry.att.breed+"</td><td>"+nrPoultry.distance.toFixed(0)+" m</td><td>"+nrPoultry.bearing.toFixed(0)+"</td></tr>";
+
+                strTable += "</table>";
+
+                drawnItems.addLayer(e.layer.bindPopup(strTable,{maxWidth:400}));
+
+                });
+
+                mymap.on('contextmenu', function(e) {
+                    var dtCurrentTime = new Date();
+                    L.marker(e.latlng).addTo(mymap).bindPopup(e.latlng.toString()+"<br>"+dtCurrentTime.toString());
+                });
+
+                mymap.on('keypress', function(e) {
+                    if (e.originalEvent.key=="l") {
+                        mymap.locate();
+                    }
+                });
+
+
+                mymap.on('zoomend', function(){
+                    $("#zoom-level").html(mymap.getZoom());
+                });
+
+                mymap.on('moveend', function(){
+                    $("#map-center").html(LatLngToArrayString(mymap.getCenter()));
+                });
+
+                mymap.on('mousemove', function(e){
+                    $("#mouse-location").html(LatLngToArrayString(e.latlng));
+                });
+
+// **************layer events ***************************
+
+                lyrIncidences.on('data:loaded', function(){
+                    mymap.fitBounds(lyrIncidences.getBounds());
+
+
+                });
+
+                 lyrVaccines.on('data:loaded', function(){
+                    mymap.fitBounds(lyrVaccines.getBounds());
+                 });
+
+                  lyrManure.on('data:loaded', function(){
+                    mymap.fitBounds(lyrManure.getBounds());
+                 });
+
+
+                lyrCattle.on('data:loaded', function(){
+                    mymap.fitBounds(lyrCattle.getBounds());
+
+                    $("#findincid").click(function(){
+                        incidid = parseInt($("#incidid").val());
+                    });
+                    $("#bufferbtn").click(function(){
+                        bufferval = parseInt($("#bufferradius").val());
+
+                        jsnIncidenceBuffer = turf.buffer(lyrIncidences.toGeoJSON(), bufferval, 'kilometers');
+                        eachIncid = jsnIncidenceBuffer.features[incidid];
+
+                        lyrIncidenceBuffer = L.geoJSON(eachIncid, {style:{color:'black', dashArray:'5,5', fillOpacity:0.3}}).addTo(mymap);
+                        lyrIncidences.bringToFront();
+
+                        searchWithin = turf.polygon(eachIncid.geometry.coordinates);
+
+                        for (var i=0; i<lyrCattle.toGeoJSON().features.length; i++){
+                            var pt = turf.point(lyrCattle.toGeoJSON().features[i].geometry.coordinates,{properties:lyrCattle.toGeoJSON().features[i].properties});
+                                  if (turf.inside(pt, searchWithin) == true){
+                                    points.push(pt);
+                                    buffered_data.push(points[i].properties.properties);
+                                    }
+                                };
+
+                        for (var i=0; i<lyrGoat.toGeoJSON().features.length; i++){
+                            var pt = turf.point(lyrGoat.toGeoJSON().features[i].geometry.coordinates,{properties:lyrGoat.toGeoJSON().features[i].properties});
+                                  if (turf.inside(pt, searchWithin) == true){
+                                    points.push(pt);
+                                    buffered_data.push(points[i].properties.properties);
+                                    }
+
+                            };
+
+                        for (var i=0; i<lyrSheep.toGeoJSON().features.length; i++){
+                            var pt = turf.point(lyrSheep.toGeoJSON().features[i].geometry.coordinates,{properties:lyrSheep.toGeoJSON().features[i].properties});
+                                  if (turf.inside(pt, searchWithin) == true){
+                                    points.push(pt);
+                                    buffered_data.push(points[i].properties.properties);
+                                    }
+
+                            };
+
+                        for (var i=0; i<lyrPoultry.toGeoJSON().features.length; i++){
+                            var pt = turf.point(lyrPoultry.toGeoJSON().features[i].geometry.coordinates,{properties:lyrPoultry.toGeoJSON().features[i].properties});
+                                  if (turf.inside(pt, searchWithin) == true){
+                                    points.push(pt);
+                                    buffered_data.push(points[i].properties.properties)
+                                    }
+
+                        };
+
+
+
+
+                    });
+
+                              $('#sendsms').click(function(){
+                                  $.ajax({
+                                       url: 'http://localhost:8000/sms',
+                                       type: "POST",
+                                       dataType: "json",
+                                       data: {"arr" : JSON.stringify(buffered_data)},
+                                       statusCode: {
+                                         200: function (your_Response_Data) {
+                                          },
+                                          404: function () {
+                                          }
+                                       },
+                                       complete: function (jqXHR, textStatus) {
+                                       }
+                                    });
+
+                          });
+                });
+
+                lyrPopulation.on('data:loaded', function(){
+                    mymap.fitBounds(lyrPopulation.getBounds());
+
+                    jsnIncidenceBuffer = turf.buffer(lyrIncidences.toGeoJSON(), 5, 'kilometers');
+
+                    lyrIncidenceBuffer = L.geoJSON( jsnIncidenceBuffer, {style:{color:'black', dashArray:'5,5', fillOpacity:0}}).addTo(mymap);
+                    lyrIncidences.bringToFront();
+
+                  // need to attach a button here where i can put the id and the buffer distance.
+                  searchWithin = turf.polygon(jsnIncidenceBuffer.features[0].geometry.coordinates);
+
+                  for (var i=0; i<lyrPopulation.toGeoJSON().features.length; i++){
+                    var pt = turf.point(lyrPopulation.toGeoJSON().features[i].geometry.coordinates,{properties:lyrPopulation.toGeoJSON().features[i].properties});
+                          if (turf.inside(pt, searchWithin) == true){
+                            points.push(pt);
+                            }
+
+
+
+                    };
+
+                    mypoints = lyrCattle.toGeoJSON();
+
+
+                    Grid = turf.idw(mypoints,'number', 0.3, 0.3,'kilometers');
+
+                    // L.geoJSON(Grid).addTo(mymap);
+                    choroplethLayer = L.choropleth(Grid, {
+                          valueProperty: 'z',
+                          colors: ['#4575b4','#91bfdb','#e0f3f8','#ffffbf', '#fee090', '#fc8d59', '#d73027'],
+                          steps: 7,
+                          mode: 'q',
+                          style: {
+                            color: '#fff',
+                            weight: 0.1,
+                            fillOpacity: 0.5
+                          }
+                          // onEachFeature: function(feature, layer) {
+                          //   layer.bindPopup("Estimated base rent in € for a 3 room apartment " + feature.properties.z)
+                          // }
+                        }).addTo(mymap);
+                     legend = L.control({
+                          position: 'bottomright'
+                        })
+                        legend.onAdd = function(map) {
+                          var div = L.DomUtil.create('div', 'info legend')
+                          var limits = choroplethLayer.options.limits
+                          var colors = choroplethLayer.options.colors
+                          var labels = []
+                          // Add min & max
+                          div.innerHTML = '<div class="labels"><div class="min">' + limits[0] + '</div> \
+                                <div class="max">' + limits[limits.length - 1] + '</div></div>'
+                          limits.forEach(function(limit, index) {
+                            labels.push('<li style="background-color: ' + colors[index] + '"></li>')
+                          })
+                          div.innerHTML += '<ul>' + labels.join('') + '</ul>'
+                          return div
+                        }
+                        legend.addTo(mymap)
+
+
+
+                });
+
+                    // searchWithin = turf.featureCollection([
+                    //     turf.polygon(jsnIncidenceBuffer.features[1].geometry.coordinates
+                    //     )
+                    // ]);
+                    // for (var i=0; i<lyrPopulation.toGeoJSON().features.length; i++){
+                  //   var pt = turf.featureCollection([turf.point(lyrPopulation.toGeoJSON().features[i].geometry.coordinates,{properties:lyrPopulation.toGeoJSON().features[i].properties})]);
+                  //   points.push(turf.within(pt, searchWithin));
+
+                  // };
+
+// ********************************************************************************************************************************
+
+                  lyrEvents.on('data:loaded', function(){
+                    mymap.fitBounds(lyrEvents.getBounds());
+                 });
+
+                  lyrFacilities.on('data:loaded', function(){
+                    mymap.fitBounds(lyrFacilities.getBounds());
+                 });
+
+                  lyrMarkets.on('data:loaded', function(){
+                    mymap.fitBounds(lyrMarkets.getBounds());
+                 });
+
+                  lyrCorridors.on('data:loaded', function(){
+                    mymap.fitBounds(lyrCorridors.getBounds());
+
+
+                 });
+
+                  lyrSubcounties.on('data:loaded', function(){
+                    mymap.fitBounds(lyrSubcounties.getBounds());
+                 });
+
+                  lyrTowns.on('data:loaded', function(){
+//                    mymap.fitBounds(lyrTowns.getBounds());
+                   lyrMarkerCluster.addLayer(lyrTowns);
+                    lyrMarkerCluster.addTo(mymap);
+                 });
+
+
+
+
+
+
+// ******************jquery event handlers ***********
+
+  $("#btnLocate").click(function(){
+                    mymap.locate();
+
+
+                });
+
+
+
+
+
+    });  // end of document.on.load() function
+
+
+
+
+
+// ***************corridors Functions********************
+
+              function styleCorridors(json){
+                  var att = json.properties;
+
+                      if (att.status == 'dormant'){
+                      return {color: 'grey',dashArray:"5,5"};
+                          }else{
+                            return {color: 'black'};
+                          }
+                      };
+
+
+
+
+
+             function processCorridors(json, lyr){
+                 var att = json.properties;
+                 // console.log(att);
+                 lyr.bindTooltip("status");
+
+             };
+
+             function returnCorridorLineByID(id){
+                var arLayers = lyrCorridors.getLayers();
+                for (i=0; i<arLayers.length-1; i++){
+                    var featureID = arLayers[i].id;
+                    // console.log(featureID);
+                    if (featureID == id){
+                        return arLayers[i]
+                    }
+                }
+                return false;
+             }
+
+
+             $('#btnFindCorridor').click(function(){
+                var id = $("#txtFindCorridor").val();
+                var lyr = returnCorridorLineByID(id);
+
+                if(lyr){
+                    if(lyrSearch){
+                        lyrSearch.remove();
+                    }
+                    lyrSearch = L.geoJSON(lyr.toGeoJSON(), {style:{color : 'red', weight:10, opacity: 0.5}}).addTo(mymap);
+                    mymap.fitBounds(lyr.getBounds().pad(1));
+                    var att = lyr.feature.properties;
+                    $("#divCorridorData").html('worked');
+                }else{
+                    $("#divCorridorError").html("***id not found***");         }
+             });
+
+
+             function filterCorridor(json){
+                   var att=json.properties;
+                   var optFilter = $("input[name=fltCorridor]:checked").val();
+                   if (optFilter == 'ALL'){
+                       return true;
+                   }else{
+                       return (att.status==optFilter);
+                   }
+
+               }
+
+
+               $("input[name=fltCorridor]").click(function(){
+                   arCorridorIDs=[];
+                   lyrCorridors.refresh();
+
+               });
+
+
+
+//  ***********incidencefunctions****************
+              function returnIncidenceMarker(json, latlng){
+                var att = json.properties;
+
+                return L.marker(latlng, {icon:icnincidence}).bindTooltip("<h4>disease reported: <br>"+ att.disease);
+                };
+
+//               function returnIncidenceMarker(json, latlng){
+//                 var att = json.properties;
+
+//                 // console.log(att.date_reported.getMonth());
+
+//                 return L.circleMarker(latlng, {radius:10, color:'brown'}).bindTooltip("<h4>purpose: <br>"+ att.sub_county);
+
+// //                var jsnBuffer = turf.buffer(json, 20,'kilomiters');
+// //                var lyrBuffer = L.geoJSON(jsnBuffer, {style:{color:'red', dashArray:'5.5'}});
+// //                lyrIncidenceBuffer.addLayer(lyrBuffer);
+// //
+//                 }
+
+
+
+// **************************events Functions******************************
+
+
+                   function returnEventMarker(json, latlng){
+                        var att = json.properties;
+
+                        return L.marker(latlng, {icon:icnevent}).bindTooltip("<h4>purpose: <br>"+ att.purpose +"<h3> Date: </h3>"+ att.date);
+                        };
+
+//                 function returnEventMarker(json, latlng){
+//                     var att = json.properties;
+// //                      if(att.animal == 'Cattle'){
+// //                          var clrCatt = 'dippink';
+// //                        }
+//                 return L.circleMarker(latlng, {radius:10, color:'brown'}).bindTooltip("<h4>purpose: <br>"+ att.purpose);
+// //
+//                 }
+
+
+               function filterEvent(json){
+                   var att=json.properties;
+                   var optFilter = $("input[name=fltEvent]:checked").val();
+                   if (optFilter == 'ALL'){
+                       return true;
+                   }else{
+                       return (att.purpose==optFilter);
+                   }
+
+               }
+
+               $("input[name=fltEvent]").click(function(){
+                   arEventIDs=[];
+                   lyrEvents.refresh();
+
+               });
+
+
+
+
+
+
+// ********************Facility functions*****************************
+
+              function returnFacilityMarker(json, latlng){
+                var att = json.properties;
+
+                return L.marker(latlng, {icon:icnfacility}).bindTooltip("<h4>current status : <br>"+ att.status);
+                };
+
+//              function returnFacilityMarker(json, latlng){
+//                     var att = json.properties;
+// //                      if(att.animal == 'Cattle'){
+// //                          var clrCatt = 'dippink';
+// //                        }
+//                 return L.circleMarker(latlng, {radius:10, color:'brown'}).bindTooltip("<h4>current status : <br>"+ att.status);
+// //
+//                 }
+
+
+               function filterFacility(json){
+                   var att=json.properties;
+                   var optFilter = $("input[name=fltFacility]:checked").val();
+                   if (optFilter == 'ALL'){
+                       return true;
+                   }else{
+                       return (att.pupose==optFilter);
+                   }
+
+               }
+
+               $("input[name=fltFacility]").click(function(){
+                   arFacilityIDs=[];
+                   lyrFacilities.refresh();
+
+               });
+
+
+
+
+
+
+//***************************Population Functions*************************
+
+              function returnCattleMarker(json, latlng){
+                var att = json.properties;
+
+                return L.marker(latlng, {icon:icnCow});
+                };
+
+                function returnPoultryMarker(json, latlng){
+                var att = json.properties;
+
+                return L.marker(latlng, {icon:icnLAMbird});
+                };
+
+                function returnSheepMarker(json, latlng){
+                var att = json.properties;
+
+                return L.marker(latlng, {icon:icnsheep});
+                };
+
+                function returnGoatMarker(json, latlng){
+                var att = json.properties;
+
+                return L.marker(latlng, {icon:icngoat});
+                };
+
+                function returnMarketMarker(json, latlng){
+                var att = json.properties;
+
+                return L.marker(latlng, {icon:icnmkt});
+                };
+
+
+
+               function filterPopulation(json){
+                   var att=json.properties;
+                   var optFilter = $("input[name=fltPopulation]:checked").val();
+                   if (optFilter == 'ALL'){
+                       return true;
+                   }else{
+                       return (att.animal==optFilter);
+                   }
+
+               }
+
+               $("input[name=fltPopulation]").click(function(){
+                   arPopulationIDs=[];
+                   lyrPopulation.refresh();
+
+               });
+// *************************************
+
+              $("#btnLinearProjects").click(function(){
+               $("#lgndLinearProjectsDetail").toggle();
+            });
+
+//*********************general functions **********************
+
+
+            function LatLngToArrayString(ll) {
+                // console.log(ll);
+                return "["+ll.lat.toFixed(5)+", "+ll.lng.toFixed(5)+"]";
+            };
+
+            function returnTownMarker(json, latlng){
+                var att = json.properties;
+                return L.circleMarker(latlng, {radius:10, color:'blue'}).bindTooltip("<h4>Name: <br>"+ att.town_name);
+            };
+
+
+
+               function returnLayerByAttribute(lyr,att,val) {
+                  var arLayers = lyr.getLayers();
+                    for (i=0;i<arLayers.length-1;i++) {
+                       var ftrVal = arLayers[i].feature.properties[att];
+                         if (ftrVal==val) {
+                    return arLayers[i];
+                }
+            }
+            return false;
+        }
+
+               $("#btnFindProject").click(function(){
+                var val = $("#txtFindProject").val();
+                var lyr = returnLayerByAttribute(lyrCorridors,'id',val);
+                if (lyr) {
+                    if (lyrSearch) {
+                        lyrSearch.remove();
+                    }
+                    lyrSearch = L.geoJSON(lyr.toGeoJSON(), {style:{color:'red', weight:10, opacity:0.5}}).addTo(mymap);
+                    mymap.fitBounds(lyr.getBounds().pad(1));
+                    var att = lyr.features;
+                    $("#divProjectData").html("<h4 class='text-center'>Attributes</h4><h5>Type: "+att.properties.number+"</h5><h5>ROW width: "+att.properties.animal+ "m </h5>");
+                    $("#divProjectError").html("");
+                } else {
+                    $("#divProjectError").html("**** Project ID not found ****");
+                }
+            });
+
+
+
+
+            function stlSubcounties(json){
+                var att = json.properties;
+                switch (att.name){
+                  case 'Tetu':
+                    return {
+                      weight: 0,
+                      color: 'purple',
+                      fillOpacity: 0.7
+                    };
+                    break;
+                  case 'Othaya':
+                    return {
+                      weight: 0,
+                      color: 'purple',
+                      fillOpacity: 0.7
+                    };
+                    break;
+                  case 'Town':
+                    return {
+                      weight: 0,
+                      color: 'brown',
+                      fillOpacity: 0.7
+                    };
+                    break;
+                  case 'Kieni-East':
+                    return {
+                      weight: 0,
+                      color: 'orange',
+                      fillOpacity: 0.7
+                    };
+                    break;
+                  case 'Kieni-West':
+                    return {
+                      weight: 0,
+                      color: 'grey',
+                      fillOpacity: 0.7
+                    };
+                    break;
+                  case 'Mukurweini':
+                  return {
+                    weight: 0,
+                    color: 'beige',
+                    fillOpacity: 0.7
+                  };
+                  break;
+                 case 'Abadare-forest':
+                    return {
+                      weight: 0,
+                      color: 'green',
+                      fillOpacity: 0.7
+                    };
+                    break;
+                case 'Mathira':
+                    return {
+                      weight: 0,
+                      color: 'blue',
+                      fillOpacity: 0.7
+                    };
+                    break;
+                  case 'Mtkenya-Forest':
+                    return {
+                      weight: 0,
+                      color: 'green',
+                      fillOpacity: 0.7
+                    };
+                    break;
+
+                 }};
+
+            function prcssSubcounties(json){
+                var att =json.properties;
+                lyr.bindTooltip("<h4> oooe "+att.name+"</h4>")
+            }
+            function filterSubcounties(json){
+                var att = json.properties;
+
+            }
+
+
+                function returnLength(arLL) {
+                   var total=0;
+                    for (var i=1;i<arLL.length;i++) {
+                        total = total + arLL[i-1].distanceTo(arLL[i]);
+                          }
+                        return total;
+                   }
+
+             function returnMultiLength(arArLL) {
+                var total=0;
+
+                for (var i=0; i<arArLL.length;i++) {
+                    total = total + returnLength(arArLL[i]);
+                }
+
+                return total;
+            }
+
+            function returnClosestlayer(lyrGroup, llRef) {
+                var arLyrs = lyrGroup.getLayers();
+                var nearest = L.GeometryUtil.closestLayer(mymap, arLyrs, llRef);
+                nearest.distance = llRef.distanceTo(nearest.latlng);
+                nearest.bearing = L.GeometryUtil.bearing(llRef, nearest.latlng);
+                if (nearest.bearing<0){
+                    nearest.bearing = nearest.bearing+360;
+                }
+                nearest.att = nearest.layer.feature.properties;
+                return nearest;
+            }
+
+        </script>
+    </body>
+</html>

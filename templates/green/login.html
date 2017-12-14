@@ -1,0 +1,15 @@
+{% extends 'green/index.html' %}
+{% load static %}
+{% block title %}Login{% endblock %}
+{% load bootstrap3 %}
+{% load bootstrap_toolkit %}
+{% block content %}
+
+  <h1>Log-in</h1>
+  <p>Please, use the following form to log-in:</p>
+  <form action="." method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <p><input type="submit" value="Log-in"></p>
+  </form>
+{% endblock %}

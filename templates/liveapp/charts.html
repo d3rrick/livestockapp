@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+    <title>livestock statistics</title>
+</head>
+<body>
+<script src="{% static 'src/jquery-3.2.0.js' %}"></script>
+<script src="{% static 'src/highcharts.js' %}"></script>
+<script src="{% static 'src/hc/code/highcharts-3d.js' %}"></script>
+<script src="{% static 'src/hc/code/modules/exporting.js' %}"></script>
+
+<div class=jumbotron>livestock statistics.</div>
+
+<div>
+    <div id="container" style="height: 400px"></div>
+
+    <div id="cont" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+</div>
+<script type="text/javascript">
+
+    var inciddata = JSON.parse("{{ inciddata|escapejs }}");
+    var marketdata = JSON.parse("{{ marketdata|escapejs }}");
+    console.log(marketdata);
+    var mathirawest=0;
+    var mathiraeast = 0;
+    var kienieast = 0;
+    var kieniwest = 0;
+    var nyericentral = 0;
+    var Mukurweini = 0;
+    var nyerisouth = 0;
+    var tetu = 0;
+    var total = 0;
+
+
+     var anthraxdata = [6,0,0,0,0,1,0,0,3,0,0,0];
+     var eastdata = [4,0,0,0,0,0,0,0,4,0,0,0];
+     var dewormingdata = [4,0,0,0,0,3,0,0,0,2,0,0];
+     var pneumoniadata = [4,0,0,0,7,0,2,0,0,0,0,0];
+
+     var ajan = 0,afeb = 0,amar = 0,aapr = 0,amay = 0,ajun = 0,ajul = 0,aaug = 0,asep = 0,aoct = 0,anov = 0,adec = 0;
+     var ejan = 0,efeb = 0,emar = 0,eapr = 0,emay = 0,ejun = 0,ejul = 0,eaug = 0,esep = 0,eoct = 0,enov = 0,edec = 0;
+     var djan = 0,dfeb = 0,dmar = 0,dapr = 0,dmay = 0,djun = 0,djul = 0,daug = 0,dsep = 0,doct = 0,dnov = 0,ddec = 0;
+     var pjan = 0,pfeb = 0,pmar = 0,papr = 0,pmay = 0,pjun = 0,pjul = 0,paug = 0,psep = 0,poct = 0,pnov = 0,pdec = 0;
+
+
+
+      for (var i=0; i<inciddata.length; i++){
+        var mydate = new Date(inciddata[i].fields.date_reported);
+        if (inciddata[i].fields.disease == "Anthrax"){
+            if (mydate.getMonth() == 0){ajan += 1;anthraxdata[0] = ajan;
+            }if (mydate.getMonth() == 1){afeb += 1;anthraxdata[1] = afeb;
+            }if (mydate.getMonth() == 2){amar += 1;anthraxdata[2] = amar;
+            }if (mydate.getMonth() == 3){aapr += 1;anthraxdata[3] = aapr;
+            }if (mydate.getMonth() == 4){amay += 1;anthraxdata[4] = amay;
+            }if (mydate.getMonth() == 5){ajun += 1;anthraxdata[5] = ajun;
+            }if (mydate.getMonth() == 6){ajul += 1;anthraxdata[6] = ajul;
+            }if (mydate.getMonth() == 6){aaug += 1;anthraxdata[7] = aaug;
+            }if (mydate.getMonth() == 8){asep += 1;anthraxdata[8] = asep;
+            }if (mydate.getMonth() == 9){aoct += 1;anthraxdata[9] = aoct;
+            }if (mydate.getMonth() == 10){anov += 1;anthraxdata[10] = anov;
+            }if (mydate.getMonth() == 11){adec += 1;anthraxdata[11] = adec;
+            }
+
+        }if (inciddata[i].fields.disease == "East_cost_fever"){
+            if (mydate.getMonth() == 0){ejan += 1;eastdata[0] = ejan;
+            }if (mydate.getMonth() == 1){efeb += 1;eastdata[1] =  efeb;
+            }if (mydate.getMonth() == 2){emar += 1;eastdata[2] = emar;
+            }if (mydate.getMonth() == 3){eapr += 1;eastdata[3] = eapr;
+            }if (mydate.getMonth() == 4){emay += 1;eastdata[4] = emay;
+            }if (mydate.getMonth() == 5){ejun += 1;eastdata[5] = ejun;
+            }if (mydate.getMonth() == 6){ejul += 1;eastdata[6] = ejul;
+            }if (mydate.getMonth() == 6){eaug += 1;eastdata[7] = eaug;
+            }if (mydate.getMonth() == 8){esep += 1;eastdata[8] = esep;
+            }if (mydate.getMonth() == 9){eoct += 1;eastdata[9] = eoct;
+            }if (mydate.getMonth() == 10){enov += 1;eastdata[10] = enov;
+            }if (mydate.getMonth() == 11){edec += 1;eastdata[11] = edec;
+            }
+
+        }if (inciddata[i].fields.disease == "Pneumonia"){
+            if (mydate.getMonth() == 0){pjan += 1;pneumoniadata[0] = pjan;
+            }if (mydate.getMonth() == 1){pfeb += 1;pneumoniadata[1] =  pfeb;
+            }if (mydate.getMonth() == 2){pmar += 1;pneumoniadata[2] = pmar;
+            }if (mydate.getMonth() == 3){papr += 1;pneumoniadata[3] = papr;
+            }if (mydate.getMonth() == 4){pmay += 1;pneumoniadata[4] = pmay;
+            }if (mydate.getMonth() == 5){pjun += 1;pneumoniadata[5] = pjun;
+            }if (mydate.getMonth() == 6){pjul += 1;pneumoniadata[6] = pjul;
+            }if (mydate.getMonth() == 6){paug += 1;pneumoniadata[7] = paug;
+            }if (mydate.getMonth() == 8){psep += 1;pneumoniadata[8] = psep;
+            }if (mydate.getMonth() == 9){poct += 1;pneumoniadata[9] = poct;
+            }if (mydate.getMonth() == 10){pnov += 1;pneumoniadata[10] = pnov;
+            }if (mydate.getMonth() == 11){pdec += 1;pneumoniadata[11] = pdec;
+            }
+
+        }if (inciddata[i].fields.disease == "Deworming"){
+            if (mydate.getMonth() == 0){djan += 1;dewormingdata[0] = djan;
+            }if (mydate.getMonth() == 1){dfeb += 1;dewormingdata[1] =  dfeb;
+            }if (mydate.getMonth() == 2){dmar += 1;dewormingdata[2] = dmar;
+            }if (mydate.getMonth() == 3){dapr += 1;dewormingdata[3] = dapr;
+            }if (mydate.getMonth() == 4){dmay += 1;dewormingdata[4] = dmay;
+            }if (mydate.getMonth() == 5){djun += 1;dewormingdata[5] = djun;
+            }if (mydate.getMonth() == 6){djul += 1;dewormingdata[6] = djul;
+            }if (mydate.getMonth() == 6){daug += 1;dewormingdata[7] = daug;
+            }if (mydate.getMonth() == 8){dsep += 1;dewormingdata[8] = dsep;
+            }if (mydate.getMonth() == 9){doct += 1;dewormingdata[9] = doct;
+            }if (mydate.getMonth() == 10){dnov += 1;dewormingdata[10] = dnov;
+            }if (mydate.getMonth() == 11){ddec += 1;dewormingdata[11] = ddec;
+            }
+
+        }
+
+        };
+
+
+$(document).ready(function(){
+
+    for (var i=0; i<inciddata.length; i++){
+        if (inciddata[i].fields.sub_county == "Mathira_West"){
+            mathirawest++;
+        }
+        if (inciddata[i].fields.sub_county == "Mathira_East"){
+            mathirawest++;
+        }
+        if (inciddata[i].fields.sub_county == "Kieni_East"){
+            mathirawest++;
+        }
+        if (inciddata[i].fields.sub_county == "Kieni_West"){
+            mathirawest++;
+        }
+        if (inciddata[i].fields.sub_county == "Nyeri_Central"){
+            mathirawest++;
+        }
+        if (inciddata[i].fields.sub_county == "Mukurweini"){
+            mathirawest++;
+        }
+        if (inciddata[i].fields.sub_county == "Tetu"){
+            mathirawest++;
+        }
+        if (inciddata[i].fields.sub_county == "Nyeri_South"){
+            mathirawest++;
+         }
+     };
+
+        total = mathirawest + mathiraeast + kienieast +  kieniwest + nyericentral + Mukurweini + nyerisouth + tetu
+        mathirawest = mathirawest/total*10
+        mathiraeast = mathiraeast/total*10
+        kienieast = kienieast/total*10
+        kieniwest = kieniwest/total*10
+        nyericentral = nyericentral/total*10
+        Mukurweini = Mukurweini/total*10
+        nyerisouth = nyerisouth/total*10
+        tetu = tetu/total*10
+
+
+
+
+
+       Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function (color) {
+                return {
+                    radialGradient: {
+                        cx: 0.5,
+                        cy: 0.3,
+                        r: 0.7
+                    },
+                    stops: [
+                        [0, color],
+                        [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+                    ]
+                };
+            });
+
+        Highcharts.chart('container', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie',
+                 options3d: {
+                    enabled: true,
+                    alpha: 45,
+                    beta: 0
+                }
+            },
+            title: {
+                text: 'Livestock disease incidences from  January, 2017 to december, 2017'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    },
+                    showInLegend: true
+                }
+            },
+
+            series: [{
+                name: 'total incidences',
+                colorByPoint: true,
+                data: [{
+                    name: 'Mathira West',
+                    y: mathirawest
+
+                }, {
+                    name: 'Mathira East',
+                    y: mathiraeast,
+                    sliced: true,
+                    selected: true
+                }, {
+                    name: 'nyeri central',
+                    y: 1
+                }, {
+                    name: 'nyeri south',
+                    y: 2
+                }, {
+                    name: 'Mukurweini',
+                    y: 4
+                }, {
+                    name: 'Tetu',
+                    y: 1
+                }, {
+                    name: 'kieni west',
+                    y: 2
+                }, {
+                    name: 'kieni east',
+                    y: 3
+
+                }]
+            }]
+        });
+
+
+
+
+     Highcharts.chart('cont', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'livestock diseases incidences per month, year 2017'
+    },
+    subtitle: {
+        text: 'Source: livestockapp.com'
+    },
+    xAxis: {
+        categories: [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec'
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Incidences (number of occurences)'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.0f} occurences</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Anthrax',
+        // data: [8, 5, 4,2, 0, 3, 6, 5,4, 1, 6, 4]
+        data : anthraxdata
+
+    }, {
+        name: 'Pneumonia',
+        // data: [6, 8, 5, 4, 0, 5, 0, 3, 2, 5, 6, 3]
+        data : pneumoniadata
+
+    }, {
+        name: 'East cost fever',
+        // data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+        data : eastdata
+
+    }, {
+        name: 'deworming',
+        // data: [4, 2, 5, 7, 6, 5, 4, 4, 6, 1, 8, 1]
+        data : dewormingdata
+
+    }]
+});
+
+
+
+
+
+
+
+
+
+
+
+
+});
+
+</script>
+
+</body>
+</html>

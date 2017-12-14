@@ -1,0 +1,759 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ret",
+				"returnMarketMarker"
+			],
+			[
+				"point",
+				"pointToLayer"
+			],
+			[
+				"lat",
+				"latlng"
+			],
+			[
+				"icn",
+				"icnCow"
+			],
+			[
+				"returnCat",
+				"returnCattleMarker"
+			],
+			[
+				"poi",
+				"pointToLayer"
+			],
+			[
+				"lyr",
+				"lyrCattle"
+			],
+			[
+				"ic",
+				"iconCow"
+			],
+			[
+				"btn",
+				"btnhome"
+			],
+			[
+				"Htt",
+				"HttpResponse"
+			],
+			[
+				"mapbe",
+				"Mapbender3"
+			],
+			[
+				"loc",
+				"localhost"
+			],
+			[
+				"parse",
+				"parseInt〔function〕"
+			],
+			[
+				"farmer",
+				"farmer_telephone"
+			],
+			[
+				"htt",
+				"HttpResponse"
+			],
+			[
+				"res",
+				"response_data"
+			],
+			[
+				"re",
+				"request_data"
+			],
+			[
+				"lyrpo",
+				"lyrPoultry"
+			],
+			[
+				"lyrPo",
+				"lyrPoultry"
+			],
+			[
+				"lyrS",
+				"lyrSheep"
+			],
+			[
+				"lyrC",
+				"lyrCattle"
+			],
+			[
+				"Pou",
+				"PoultryAdmin"
+			],
+			[
+				"S",
+				"SheepAdmin"
+			],
+			[
+				"Goat",
+				"GoatAdmin"
+			],
+			[
+				"Ca",
+				"CattleAdmin"
+			],
+			[
+				"goa",
+				"goat_id"
+			],
+			[
+				"shep",
+				"sheep_id"
+			],
+			[
+				"cow",
+				"cow_id"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "templates/green/index.html",
+			"settings":
+			{
+				"buffer_size": 10059,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": " <!DOCTYPE html>\n {% load staticfiles %}\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <title>Liveapp</title>\n        <link rel=\"stylesheet\" href=\"{% static 'src/leaflet.css' %}\">\n        <link rel=\"stylesheet\" href=\"{% static 'src/jquery-ui.min.css' %}\">\n        <link rel=\"stylesheet\" href=\"{% static 'src/css/bootstrap.css' %}\">\n         <link rel=\"stylesheet\" href=\"{% static 'src/css/font-awesome.min.css' %}\">\n          <link rel=\"stylesheet\" href=\"{% static 'src/plugins/leaflet.awesome-markers.css' %}\">\n        <link rel=\"stylesheet\" href=\"{% static 'src/plugins/L.Control.Pan.css' %}\">\n        <link rel=\"stylesheet\" href=\"{% static 'src/plugins/L.Control.Zoomslider.css' %}\">\n        <link rel=\"stylesheet\" href=\"{% static 'src/plugins/L.Control.MousePosition.css' %}\">\n        <link rel=\"stylesheet\" href=\"{% static 'src/plugins/L.Control.Sidebar.css' %}\">\n        <link rel=\"stylesheet\" href=\"{% static 'src/plugins/Leaflet.PolylineMeasure.css' %}\">\n\n        <link rel=\"stylesheet\" href=\"{% static 'src/plugins/easy-button.css' %}\">\n        <link rel=\"stylesheet\" href=\"{% static 'src/plugins/leaflet-opencage/src/css/L.Control.OpenCageSearch.css' %}\">\n        <link rel=\"stylesheet\" href=\"{% static 'src/plugins/leaflet-draw/leaflet.draw.css' %}\"/>\n        <link rel=\"stylesheet\" href=\"{% static 'src/plugins/leaflet-styleeditor/css/Leaflet.StyleEditor.css' %}\">\n        <link rel=\"stylesheet\" href=\"{% static 'src/css/font-awesome.min.css' %}\"/>\n        <link rel=\"stylesheet\" href=\"{% static 'src/plugins/MarkerCluster.Default.css' %}\"/>\n        <link rel=\"stylesheet\" href=\"{% static 'src/plugins/MarkerCluster.css' %}\"/>\n        <link rel=\"stylesheet\" href=\"{% static 'src/plugins/routing/dist/leaflet-routing-machine.css' %}\"/>\n\n\n\n        <script src=\"{% static 'src/leaflet-src.js' %}\"></script>\n\n        <script src=\"{% static 'src/jquery-3.2.0.min.js' %}\"></script>\n        <script src=\"{% static 'src/leaflet-corridor.js' %}\"></script>\n        <script src=\"{% static 'src/jquery-ui.min.js' %}\"></script>\n        <script src=\"{% static 'src/choropleth.js' %}\"></script>\n\n        <script src=\"{% static 'src/plugins/L.Control.Pan.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/L.Control.Zoomslider.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/L.Control.MousePosition.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet.awesome-markers.min.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/L.Control.Sidebar.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/Leaflet.PolylineMeasure.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet.ajax.min.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet.geometryutil.js' %}\"></script>\n         <script src=\"{% static 'src/turf.min.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/easy-button.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-opencage/src/js/L.Control.OpenCageSearch.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-providers.js' %}\"></script>\n         <script src=\"{% static 'src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleEditor.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleForms.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/routing/dist/leaflet-routing-machine.js' %}\"></script>\n<!--    ***************  Begin Leaflet.Draw-->\n\n        <script src=\"{% static 'src/plugins/leaflet-draw/Leaflet.draw.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-draw/Leaflet.Draw.Event.js' %}\"></script>\n        <link rel=\"stylesheet\" href=\"{% static 'src/plugins/leaflet-draw/leaflet.draw.css' %}\"/>\n\n        <script src=\"{% static 'src/plugins/leaflet-draw/Toolbar.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-draw/Tooltip.js' %}\"></script>\n\n        <script src=\"{% static 'src/plugins/leaflet-draw/ext/GeometryUtil.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-draw/ext/LatLngUtil.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-draw/ext/LineUtil.Intersect.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-draw/ext/Polygon.Intersect.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-draw/ext/Polyline.Intersect.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-draw/ext/TouchEvents.js' %}\"></script>\n\n        <script src=\"{% static 'src/plugins/leaflet-draw/draw/DrawToolbar.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-draw/draw/handler/Draw.Feature.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-draw/draw/handler/Draw.SimpleShape.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-draw/draw/handler/Draw.Polyline.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-draw/draw/handler/Draw.Circle.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-draw/draw/handler/Draw.Marker.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-draw/draw/handler/Draw.Polygon.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-draw/draw/handler/Draw.Rectangle.js' %}\"></script>\n\n\n        <script src=\"{% static 'src/plugins/leaflet-draw/edit/EditToolbar.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-draw/edit/handler/EditToolbar.Edit.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-draw/edit/handler/EditToolbar.Delete.js' %}\"></script>\n\n        <script src=\"{% static 'src/plugins/leaflet-draw/Control.Draw.js' %}\"></script>\n\n        <script src=\"{% static 'src/plugins/leaflet-draw/edit/handler/Edit.Poly.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-draw/edit/handler/Edit.SimpleShape.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-draw/edit/handler/Edit.Circle.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-draw/edit/handler/Edit.Rectangle.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet-draw/edit/handler/Edit.Marker.js' %}\"></script>\n        <script src=\"{% static 'src/plugins/leaflet.markercluster.js' %}\"></script>\n<!--    **************  End of Lealet Draw-->\n\n          <style>\n            #mapdiv {\n                height:100vh;\n            }\n              #divProject{\n                  background-color: beige;\n              }\n               .col-xs-12, .col-xs-6, .col-xs-4{\n                  padding:3px;\n              }\n              .errorMsg{\n                  padding:0;\n                  text-align: center;\n                  background-color: darksalmon;\n              }\n              .btn-default {\n                    background: #0f0f0f;\n                    color: #fff;\n                }\n                img {\n                      position: relative;\n                      top: -3px;\n                      left: -3px;\n                           }\n\n        </style>\n    </head>\n    <body>\n\n\n\n\n\n\n        <div id=\"side-bar\" class=\"col-md-3\">\n\n           <div class=\"col-xs-6\">\n                        <button id='btnhome' class='btn btn-default btn-block'><a href=\"{% url 'home' %}\">home</a></button><br>\n\n                    </div>\n            <div class=\"col-xs-6\">\n                        <button class='btn btn-default btn-block'><a href=\"{% url 'maps' %}\">density maps</a></button><br>\n                    </div>\n\n            <button id='btnLocate' class='btn btn-info btn-block'>closest facility geolocation.</button><br>\n\n\n                <button id=\"btnShowLegend\" class='btn btn-primary btn-block'>Legend Section</button>\n\n                <div id=\"legend\">\n                <h4 class=\"text-center\">toggle legend<i id=\"btnLinearProjects\" class=\"fa fa-server\"></i></h4>\n                <div id=\"lgndLinearProjectsDetail\">\n                      <svg width=\"100\" height=\"100\">\n                          <img src=\"http://localhost:8000/static/img/legend.png\"/>\n                     </svg>\n               </div>\n                </div>\n\n\n            <div id=\"divProject\" class=\"col-xs-12\">\n                <div id=\"divProjectLabel\" class=\"text-center col-xs-12\">\n                    <h4 id=\"lblProject\">Query data</h4>\n                </div>\n                <div id=\"divProjectError\" class=\"errorMsg col-xs-12\"></div>\n                <div id=\"divFindProject\" class=\"form-group has-error\">\n                    <div class=\"col-xs-6\">\n                        <input type=\"text\" id=\"txtFindProject\" class=\"form-control\" placeholder=\"Project ID\">\n                    </div>\n\n                    <div class=\"col-xs-6\">\n                        <button id=\"btnFindProject\" class=\"btn btn-primary btn-block\" disabled>Query data</button>\n                    </div>\n                </div>\n                <div class=\"\" id=\"divProjectData\"></div>\n            </div>\n\n\n            <div id=\"divPopulation\" class=\"col-xs-12\">\n                <div id=\"divPopulationLabel\" class=\"text-center col-xs-12\">\n                    <h4 id=\"lblPopulation\">Population</h4>\n                </div>\n                <div id=\"divPopulationError\" class=\"errorMsg col-xs-12\"></div>\n\n                <div id=\"divFindPopulation\" class=\"form-group has-error\">\n                    <div class=\"col-xs-6\">\n                        <input type=\"text\" id=\"txtFindPoulation\" class=\"form-control\" placeholder=\"Population ID\">\n                    </div>\n                    <div class=\"col-xs-6\">\n                        <button id=\"btnFindPopulatioin\" class=\"btn btn-primary btn-block\" disabled>find population</button>\n                    </div>\n                </div>\n                <div id=\"divFilterPopulation\" class=\"col-xs-12\">\n                    <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltPopulation' value='ALL' checked> All\n                    </div>\n                     <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltPopulation' value='Cattle' > Cattle\n                    </div>\n                     <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltPopulation' value='Goat' > Goat\n                    </div>\n                     <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltPopulation' value='Poultly' > Poultly\n                    </div>\n                      <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltPopulation' value='mixed' > mixed\n                    </div>\n\n                </div>\n                <div class=\"\" id=\"divPopulationData\"></div>\n            </div>\n\n\n            <div id=\"divFacility\" class=\"col-xs-12\">\n                <div id=\"divFacilityLabel\" class=\"text-center col-xs-12\">\n                    <h4 id=\"lblFacility\">Facilities</h4>\n                </div>\n                <div id=\"divFacilityError\" class=\"errorMsg col-xs-12\"></div>\n                <div id=\"divFindFacility\" class=\"form-group has-error\">\n                    <div class=\"col-xs-6\">\n                        <input type=\"text\" id=\"txtFindFacility\" class=\"form-control\" placeholder=\"Facility ID\">\n                    </div>\n                    <div class=\"col-xs-6\">\n                        <button id=\"btnFindFacility\" class=\"btn btn-primary btn-block\" disabled>Find Facilities</button>\n                    </div>\n                </div>\n                <div id=\"divFilterFacility\" class=\"col-xs-12\">\n                    <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltFacility' value='ALL' checked> All\n                    </div>\n                     <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltFacility' value='cattle dip' > cattle dip\n                    </div>\n                     <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltFacility' value='milk collection centre' > milk collection centre\n                    </div>\n                     <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltFacility' value='slaughter house' > slaughter house\n                    </div>\n                      <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltFacility' value='Biogas digester' > Biogas digester\n                    </div>\n                    <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltFacility' value='training center' > training center\n                    </div>\n                    <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltFacility' value='Artificial insemination'> Artificial insemination\n                    </div>\n                </div>\n                <div class=\"\" id=\"divFacilityData\"></div>\n            </div>\n\n\n            <div id=\"divCorridor\" class=\"col-xs-12\">\n                <div id=\"divCorridorLabel\" class=\"text-center col-xs-12\">\n                    <h4 id=\"lblCorridor\">Corridors</h4>\n                </div>\n                <div id=\"divCorridorError\" class=\"errorMsg col-xs-12\"></div>\n                <div id=\"divFindCorridor\" class=\"form-group has-error\">\n                    <div class=\"col-xs-6\">\n                        <input type=\"text\" id=\"txtFindCorridor\" class=\"form-control\" placeholder=\"Corridor ID\">\n                    </div>\n                    <div class=\"col-xs-6\">\n                        <button id=\"btnFindCorridor\" class=\"btn btn-primary btn-block\" >Find Corridors</button>\n                    </div>\n                </div>\n                <div id=\"divFilterCorridor\" class=\"col-xs-12\">\n                    <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltCorridor' value='ALL' checked> All\n                    </div>\n                     <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltCorridor' value='active' > active\n                    </div>\n                     <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltCorridor' value='dormant' > dormant\n                    </div>\n                     <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltCorridor' value='other' > other\n                    </div>\n\n                </div>\n                <div class=\"\" id=\"divCorridorData\"></div>\n            </div>\n\n\n            <div id=\"divEvent\" class=\"col-xs-12\">\n                <div id=\"divEventLabel\" class=\"text-center col-xs-12\">\n                    <h4 id=\"lblEvent\">Events</h4>\n                </div>\n                <div id=\"divEventError\" class=\"errorMsg col-xs-12\"></div>\n                <div id=\"divFindEvent\" class=\"form-group has-error\">\n                    <div class=\"col-xs-6\">\n                        <input type=\"text\" id=\"txtFindEvent\" class=\"form-control\" placeholder=\"Event ID\">\n                    </div>\n                    <div class=\"col-xs-6\">\n                        <button id=\"btnFindEvent\" class=\"btn btn-primary btn-block\" disabled>Find Events</button>\n                    </div>\n                </div>\n                <div id=\"divFilterEvent\" class=\"col-xs-12\">\n                    <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltEvent' value='ALL' checked> All\n                    </div>\n                     <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltEvent' value='vaccination' > vaccination\n                    </div>\n                     <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltEvent' value='Seminar' > Seminar\n                    </div>\n                     <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltEvent' value='Road Show' > Road Show\n                    </div>\n                      <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltEvent' value='Annual GM'> Annual GM\n                    </div>\n                      <div id=\"class\" class=\"col-xs-4\">\n                        <input type=\"radio\" name='fltEvent' value='other' >other\n                    </div>\n\n                </div>\n                <div class=\"\" id=\"divEventData\"></div>\n            </div>\n\n\n\n\n            <div id=\"divIncidence\" class=\"col-xs-12\">\n                <div id=\"divIncidenceLabel\" class=\"text-center col-xs-12\">\n                    <h4 id=\"lblIncidence\">Incidences</h4>\n                </div>\n                <div id=\"divIncidenceError\" class=\"errorMsg col-xs-12\"></div>\n                <div id=\"divFindIncidence\" class=\"form-group has-error\">\n                    <div class=\"col-xs-6\">\n                        <input type=\"text\" id=\"txtFindIncidence\" class=\"form-control\" placeholder=\"Incidence ID\">\n                    </div>\n                    <div class=\"col-xs-6\">\n                        <button id=\"btnFindIncidence\" class=\"btn btn-primary btn-block\" disabled>Find Incidences</button>\n                    </div>\n                </div>\n                <div class=\"\" id=\"divIncidenceData\"></div>\n            </div>\n\n                <div id=\"divNotify\" class=\"col-xs-12\">\n                <div id=\"divNotifyLabel\" class=\"text-center col-xs-12\">\n                    <h4 id=\"lblIncidence\">Notifications</h4>\n                </div>\n\n                <div id=\"divFindIncidence\" class=\"form-group has-error\">\n                    <div class=\"col-xs-6\">\n                        <input type=\"text\" id=\"incidid\" class=\"form-control\" placeholder=\"Incidence ID\">\n                    </div>\n                    <div class=\"col-xs-6\">\n                        <button id=\"findincid\" class=\"btn btn-primary btn-block\">Enter</button>\n                    </div>\n                    <div class=\"col-xs-6\">\n                        <input type=\"text\" id=\"bufferradius\" class=\"form-control\" placeholder=\"Buffer Radius in km\">\n                    </div>\n                    <div class=\"col-xs-6\">\n                        <button id=\"bufferbtn\" class=\"btn btn-primary btn-block\">Buffer</button>\n                    </div>\n\n                    <div class=\"col-xs-9\">\n                        <button id=\"sendsms\" class=\"btn btn-success btn-block\">Send Notification</button>\n                    </div>\n\n\n\n\n                </div>\n                <div class=\"\" id=\"divIncidenceData\"></div>\n            </div>\n\n        </div>\n\n        <div id=\"mapdiv\" class=\"col-md-12\"></div>\n\n           <script>\n            var mymap;\n            var lyrOSM;\n            var lyrImagery;\n            var lyrTopo;\n            var lyrWaterColor;\n            var lyrOutdoors;\n            var lyrPoly;\n            var lyrEaglesNest;\n            var lyrSearch;\n\n            var lyrIncidenceBuffer;\n            var jsnIncidenceBuffer;\n            var points = [];\n            var ptsWithin;\n\n            var lyrMarkerCluster;\n            var plyParks;\n            var plnBikeRoute;\n            var fgpChapultepec;\n            var drawnItems;\n            var mrkCurrentLocation;\n            var popZocalo;\n            var ctlAttribute;\n            var ctlScale;\n            var ctlPan;\n            var ctlZoomslider;\n            var ctlMouseposition;\n            var ctlMeasure;\n            var ctlEasybutton;\n            var ctlSidebar;\n            var ctlSearch;\n            var ctlLayers;\n            var ctlStyle;\n            var ctlRouting;\n\n            var ctlDraw;\n            var objBasemaps;\n            var ObjOverlays;\n            var roomPoint;\n\n//            *********datasets variables****************\n\n            var lyrIncidences;\n            var lyrMarkets;\n            var lyrCorridors;\n            var lyrEvents;\n            var lyrFacilities;\n            var lyrVaccines;\n            var lyrManure;\n            var lyrPopulation;\n            var lyrCattle;\n            var lyrGoat;\n            var lyrSheep;\n            var lyrPoultry;\n            var lyrSubcounties;\n            var lyrTowns;\n            var lyrColli;\n\n            var arCollidorIDs = [];\n\n            var arPopulationIDs = [];\n            var arCattleIDs = [];\n            var arGoatIDs = [];\n            var arSheepIDs = [];\n            var arPoultryIDs = [];\n\n\n\n            var arFacilityIDs = [];\n            var arEventIDs = [];\n            var arCollidorIDs = [];\n            var buffered;\n\n            var searchWithin;\n            var searched;\n            var ptsWithin;\n\n\n            var mypoints;\n             var finpoints;\n            var Grid;\n            var choroplethLayer;\n            var legend;\n\n            var buffered_data = [];\n            var incidid;\n            var bufferval;\n            var eachIncid;\n            // var mytin;\n\n            var icnCow;\n            var icnLAMbird;\n            var icngoat;\n            var icnsheep;\n            var icnmkt;\n            var icnincidence;\n            var icnfacility;\n            var icnevent;\n\n\n\n            $(document).ready(function(){\n\n//                **********map initialization *************\n\n\n                mymap = L.map('mapdiv', {center:[-0.3978268, 36.9612328], zoom:16, zoomControl:false, attributionControl:false});\n\n\n                ctlStyle = L.control.styleEditor({position:'topright'}).addTo(mymap);\n                ctlPan = L.control.pan().addTo(mymap);\n                ctlZoomslider = L.control.zoomslider({position:'topright'}).addTo(mymap);\n                ctlMeasure = L.control.polylineMeasure().addTo(mymap);\n                ctlSidebar = L.control.sidebar('side-bar').addTo(mymap);\n                ctlEasybutton = L.easyButton('glyphicon-transfer', function(){\n                ctlSidebar.toggle();\n                }).addTo(mymap);\n                ctlSearch = L.Control.openCageSearch({ limit:10}).addTo(mymap);\n                ctlAttribute = L.control.attribution({position:'bottomleft'}).addTo(mymap);\n                ctlAttribute.addAttribution('OSM');\n                ctlAttribute.addAttribution('&copy; <a href=\"http://reactgis\"</a>');\n                ctlScale = L.control.scale({position:'bottomleft', metric:false, maxWidth:200}).addTo(mymap);\n                ctlMouseposition = L.control.mousePosition().addTo(mymap);\n\n\n                // **********************************icons**************\n                // icnCow =  L.AwesomeMarkers.icon({icon:'tree-conifer', markerColor:'green'});\n                    icnCow  = L.icon({iconUrl:'http://localhost:8000/static/img/cow.svg', iconSize:[40,40], iconAnchor:[20,24]});\n                // icnLAMbird = L.AwesomeMarkers.icon({icon:'twitter', markerColor:'green', iconColor:'#FF0000', prefix:'fa', spin:true});\n\n                icnLAMbird = L.icon({iconUrl:'http://localhost:8000/static/img/chicken.svg', iconSize:[40,40], iconAnchor:[20,24]});\n                // icngoat = L.AwesomeMarkers.icon({icon:'tree-conifer', markerColor:'green'});\n                icngoat  = L.icon({iconUrl:'http://localhost:8000/static/img/goat.svg', iconSize:[40,40], iconAnchor:[20,24]});\n                icnincidence = L.icon({iconUrl:'http://localhost:8000/static/img/incidence.svg', iconSize:[40,40], iconAnchor:[20,24]});\n\n\n                // icnsheep = L.AwesomeMarkers.icon({icon:'tree-conifer', markerColor:'green'});\n\n                  icnsheep  = L.icon({iconUrl:'http://localhost:8000/static/img/sheep.svg', iconSize:[40,40], iconAnchor:[20,24]});\n                icnmkt =  L.icon({iconUrl:'http://localhost:8000/static/img/market.svg', iconSize:[40,40], iconAnchor:[20,24]});\n\n                icnfacility = L.icon({iconUrl:'http://localhost:8000/static/img/home.svg', iconSize:[40,40], iconAnchor:[20,24]});\n                icnevent =  L.icon({iconUrl:'http://localhost:8000/static/img/events.svg', iconSize:[40,40], iconAnchor:[20,24]});\n\n\n\n\n\n\n// *************layer initialization *************\n\n                lyrOSM = L.tileLayer.provider('OpenStreetMap.Mapnik');\n                lyrImagery = L.tileLayer.provider('Esri.WorldImagery');\n                lyrTopo = L.tileLayer.provider('OpenTopoMap');\n                lyrWaterColor = L.tileLayer.provider('Stamen.Watercolor');\n                lyrOutdoors = L.tileLayer.provider('Thunderforest.Outdoors');\n                mymap.addLayer(lyrOSM);\n\n\n//    **********************overlay layer control ************\n\n                objBasemaps = {\n                    \"Open Street Maps\" : lyrOSM,\n                    \"Topo Map\" : lyrTopo,\n                    \"Imagery\" : lyrImagery,\n                    \"Outdoors\" : lyrOutdoors,\n                    \"Watercolor\" : lyrWaterColor\n                  };\n//********************** overlay layers*******************************\n                drawnItems = new L.FeatureGroup();\n                drawnItems.addTo(mymap);\n\n                lyrMarkerCluster =L.markerClusterGroup();\n\n\n                lyrIncidenceBuffer = L.featureGroup();\n                lyrIncidences = L.geoJSON.ajax('http://localhost:8000/incidences_data',\n                {pointToLayer:returnIncidenceMarker}).addTo(mymap);\n\n// http://172.16.104.126:9000/population_data\n                lyrVaccines = L.geoJSON.ajax('http://localhost:8000/vaccines_data').addTo(mymap);\n\n                lyrManure = L.geoJSON.ajax('http://localhost:8000/manure_data').addTo(mymap);\n\n                // lyrPopulation = L.geoJSON.ajax('http://localhost:8000/population_data', {pointToLayer:returnPopulationMarker,filter:filterPopulation}).addTo(mymap);\n\n                lyrCattle = L.geoJSON.ajax('http://localhost:8000/cattle_data', {pointToLayer:returnCattleMarker}).addTo(mymap);\n                lyrCattle.on('data:loaded', function(){\n                    lyrCattle.addTo(mymap)\n                });\n\n\n\n                lyrSheep = L.geoJSON.ajax('http://localhost:8000/sheep_data', {pointToLayer:returnSheepMarker}).addTo(mymap);\n                lyrGoat = L.geoJSON.ajax('http://localhost:8000/goat_data', {pointToLayer:returnGoatMarker}).addTo(mymap);\n                lyrPoultry = L.geoJSON.ajax('http://localhost:8000/poultry_data',{\n                    pointToLayer:returnPoultryMarker}).addTo(mymap);\n\n\n                lyrEvents = L.geoJSON.ajax('http://localhost:8000/events_data', {pointToLayer:returnEventMarker,filter:filterEvent}).addTo(mymap);\n\n\n                lyrFacilities = L.geoJSON.ajax('http://localhost:8000/facilities_data', {pointToLayer:returnFacilityMarker,filter:filterFacility}).addTo(mymap);\n\n                lyrMarkets = L.geoJSON.ajax('http://localhost:8000/markets_data',{pointToLayer:returnMarketMarker}).addTo(mymap);\n\n\n                lyrCorridors = L.geoJSON.ajax('http://localhost:8000/corridors',{style:styleCorridors,onEachFeature: processCorridors, filter: filterCorridor}).addTo(mymap);\n\n\n               \n\n                lyrTowns = L.geoJSON.ajax('http://localhost:8000/towns_data',{pointToLayer: returnTownMarker});\n                // console.log(lyrTowns);\n                //\n                // mypoints = turf.random('points', 30, {bbox: [50, 30, 70, 50]});\n                // for (var i = 0; i < mypoints.features.length; i++) {\n                //       mypoints.features[i].properties.z = ~~(Math.random() * 9);\n                //     }\n                // mytin = turf.tin(mypoints, 'z');\n                // console.log(mytin);\n\n\n\n\n\n // **************overlays hamymndlers*****************************\n\n                  ObjOverlays = {\n                    \"sub-counties\" : lyrSubcounties,\n                    \"towns\" : lyrMarkerCluster,\n                    \"corridors\" : lyrCorridors,\n                    \"incidences\" : lyrIncidences,\n                    \"Vaccines\" : lyrVaccines,\n\n                    \"facilities\" : lyrFacilities,\n                    \"events\" : lyrEvents,\n                    \"markets\" : lyrMarkets,\n                    \"markets\" : lyrMarkets,\n                    \"cattle\" : lyrCattle,\n                    \"goats\" : lyrGoat,\n                    \"sheep\" : lyrSheep,\n                    \"poultry\" : lyrPoultry,\n                    \"drawn items\" : drawnItems\n\n//\n                  };\n//***************layer control************\n\n              ctlLayers = L.control.layers(objBasemaps, ObjOverlays).addTo(mymap);\n              // ctlRouting = L.Routing.control({waypoints:[L.latLng(-0.3978268, 36.9612328),L.latLng(-0.378268, 36.7612328)], router: L.Routing.mapbox('pk.eyJ1IjoiZGVyeSIsImEiOiJjaWY5anJyN3YwMDI5dGNseHoyZzM4Z3R4In0.dToOXYIZ30LH_7VtFbKW4A')}).addTo(mymap);\n\n//\n\n//************** draw controls *****************\n\n                ctlDraw = new L.Control.Draw({\n                    draw : {\n                        polyline: false,\n                        polygon: false,\n                        rectangle: false,\n                        circle:false\n                    },\n                    edit:{\n                        featureGroup: drawnItems,\n                        remove: true\n                    }\n\n                });\n                ctlDraw.addTo(mymap);\n\n\n\n\n// ****************location events **********\n\n                mymap.on('locationfound', function(e) {\n                    // console.log(e);\n                    if (mrkCurrentLocation) {\n                        mrkCurrentLocation.remove();\n                    }\n                    mrkCurrentLocation = L.circle(e.latlng, {radius:e.accuracy/2}).addTo(mymap);\n                    mymap.setView(e.latlng, 14);\n\n\n                            var llRef = e.layer.getLatLng();\n                            var strTable = \"<table class='table table-hover'>\";\n                            strTable += \"<tr><th>Constraint</th><th>ID</th><th>Type</th><th>Distance</th><th>Direction</th></tr>\";\n\n                            // var nrCorridors = returnClosestlayer(lyrCorridors, llRef);\n                            // strTable += \"<tr><td>Corridor</td><td>\"+nrCorridors.att.status+\"</td><td>\"+nrCorridors.att.animal+\"</td><td>\"+nrCorridors.distance.toFixed(0)+\" m</td><td>\"+nrCorridor.bearing.toFixed(0)+\"</td></tr>\";\n\n                            var nrFacility = returnClosestlayer(lyrFacilities, llRef);\n                            strTable += \"<tr><td>Facility</td><td>\"+nrFacility.att.status+\"</td><td>\"+nrFacility.att.owner+\"</td><td>\"+nrFacility.distance.toFixed(0)+\" m</td><td>\"+nrFacility.bearing.toFixed(0)+\"</td></tr>\";\n\n                           var nrMarket = returnClosestlayer(lyrMarkets, llRef);\n                           strTable += \"<tr><td>Markets</td><td>\"+nrMarket.att.status+\"</td><td>\"+nrMarket.att.animal+\"</td><td>\"+nrMarket.distance.toFixed(0)+\" m</td><td>\"+nrMarket.bearing.toFixed(0)+\"</td></tr>\";\n\n                            // var nrPopulation = returnClosestlayer(lyrPopulation, llRef);\n                            // strTable += \"<tr><td>Population</td><td>\"+nrPopulation.att.status+\"</td><td>\"+nrPopulation.att.animal+\"</td><td>\"+nrPopulation.distance.toFixed(0)+\" m</td><td>\"+nrPopulation.bearing.toFixed(0)+\"</td></tr>\";\n            //\n                            var nrEvent = returnClosestlayer(lyrEvents, llRef);\n                            strTable += \"<tr><td>Event</td><td>\"+nrEvent.att.name+\"</td><td>\"+nrEvent.att.name+\"</td><td>\"+nrEvent.distance.toFixed(0)+\" m</td><td>\"+nrEvent.bearing.toFixed(0)+\"</td></tr>\";\n            //\n                           var nrIncidence = returnClosestlayer(lyrIncidences, llRef);\n                           strTable += \"<tr><td>Incidence</td><td>\"+nrIncidence.att.status+\"</td><td>\"+nrIncidence.att.animal+\"</td><td>\"+nrIncidence.distance.toFixed(0)+\" m</td><td>\"+nrIncidence.bearing.toFixed(0)+\"</td></tr>\";\n\n                           var nrCattle = returnClosestlayer(lyrCattle, llRef);\n                           strTable += \"<tr><td>Cattle farm</td><td>\"+nrCattle.att.id+\"</td><td>\"+nrCattle.att.breed+\"</td><td>\"+nrCattle.distance.toFixed(0)+\" m</td><td>\"+nrCattle.bearing.toFixed(0)+\"</td></tr>\";\n\n                           var nrPoultry = returnClosestlayer(lyrCattle, llRef);\n                           strTable += \"<tr><td>Poultry farm</td><td>\"+nrPoultry.att.id+\"</td><td>\"+nrPoultry.att.breed+\"</td><td>\"+nrPoultry.distance.toFixed(0)+\" m</td><td>\"+nrPoultry.bearing.toFixed(0)+\"</td></tr>\";\n\n                            strTable += \"</table>\";\n\n                            mrkCurrentLocation.addLayer(e.layer.bindPopup(strTable,{maxWidth:400}));\n\n\n                });\n\n                mymap.on('locationerror', function(e) {\n                    // console.log(e);\n                    alert(\"Location was not found\");\n                })\n\n\n//***********************map events *****************\n\n             mymap.on('draw:created', function(e){\n                var llRef = e.layer.getLatLng();\n                var strTable = \"<table class='table table-hover'>\";\n                strTable += \"<tr><th>Constraint</th><th>ID</th><th>Type</th><th>Distance</th><th>Direction</th></tr>\";\n\n                // var nrCorridors = returnClosestlayer(lyrCorridors, llRef);\n                // strTable += \"<tr><td>Corridor</td><td>\"+nrCorridors.att.status+\"</td><td>\"+nrCorridors.att.animal+\"</td><td>\"+nrCorridors.distance.toFixed(0)+\" m</td><td>\"+nrCorridor.bearing.toFixed(0)+\"</td></tr>\";\n\n                var nrFacility = returnClosestlayer(lyrFacilities, llRef);\n                strTable += \"<tr><td>Facility</td><td>\"+nrFacility.att.status+\"</td><td>\"+nrFacility.att.owner+\"</td><td>\"+nrFacility.distance.toFixed(0)+\" m</td><td>\"+nrFacility.bearing.toFixed(0)+\"</td></tr>\";\n\n               var nrMarket = returnClosestlayer(lyrMarkets, llRef);\n               strTable += \"<tr><td>Markets</td><td>\"+nrMarket.att.status+\"</td><td>\"+nrMarket.att.animal+\"</td><td>\"+nrMarket.distance.toFixed(0)+\" m</td><td>\"+nrMarket.bearing.toFixed(0)+\"</td></tr>\";\n\n                // var nrPopulation = returnClosestlayer(lyrPopulation, llRef);\n                // strTable += \"<tr><td>Population</td><td>\"+nrPopulation.att.status+\"</td><td>\"+nrPopulation.att.animal+\"</td><td>\"+nrPopulation.distance.toFixed(0)+\" m</td><td>\"+nrPopulation.bearing.toFixed(0)+\"</td></tr>\";\n//\n                var nrEvent = returnClosestlayer(lyrEvents, llRef);\n                strTable += \"<tr><td>Event</td><td>\"+nrEvent.att.name+\"</td><td>\"+nrEvent.att.name+\"</td><td>\"+nrEvent.distance.toFixed(0)+\" m</td><td>\"+nrEvent.bearing.toFixed(0)+\"</td></tr>\";\n//\n               var nrIncidence = returnClosestlayer(lyrIncidences, llRef);\n               strTable += \"<tr><td>Incidence</td><td>\"+nrIncidence.att.status+\"</td><td>\"+nrIncidence.att.animal+\"</td><td>\"+nrIncidence.distance.toFixed(0)+\" m</td><td>\"+nrIncidence.bearing.toFixed(0)+\"</td></tr>\";\n\n               var nrCattle = returnClosestlayer(lyrCattle, llRef);\n               strTable += \"<tr><td>Cattle farm</td><td>\"+nrCattle.att.id+\"</td><td>\"+nrCattle.att.breed+\"</td><td>\"+nrCattle.distance.toFixed(0)+\" m</td><td>\"+nrCattle.bearing.toFixed(0)+\"</td></tr>\";\n\n               var nrPoultry = returnClosestlayer(lyrCattle, llRef);\n               strTable += \"<tr><td>Poultry farm</td><td>\"+nrPoultry.att.id+\"</td><td>\"+nrPoultry.att.breed+\"</td><td>\"+nrPoultry.distance.toFixed(0)+\" m</td><td>\"+nrPoultry.bearing.toFixed(0)+\"</td></tr>\";\n\n                strTable += \"</table>\";\n\n                drawnItems.addLayer(e.layer.bindPopup(strTable,{maxWidth:400}));\n\n                });\n\n                mymap.on('contextmenu', function(e) {\n                    var dtCurrentTime = new Date();\n                    L.marker(e.latlng).addTo(mymap).bindPopup(e.latlng.toString()+\"<br>\"+dtCurrentTime.toString());\n                });\n\n                mymap.on('keypress', function(e) {\n                    if (e.originalEvent.key==\"l\") {\n                        mymap.locate();\n                    }\n                });\n\n\n                mymap.on('zoomend', function(){\n                    $(\"#zoom-level\").html(mymap.getZoom());\n                });\n\n                mymap.on('moveend', function(){\n                    $(\"#map-center\").html(LatLngToArrayString(mymap.getCenter()));\n                });\n\n                mymap.on('mousemove', function(e){\n                    $(\"#mouse-location\").html(LatLngToArrayString(e.latlng));\n                });\n\n// **************layer events ***************************\n\n                lyrIncidences.on('data:loaded', function(){\n                    mymap.fitBounds(lyrIncidences.getBounds());\n\n\n                });\n\n                 lyrVaccines.on('data:loaded', function(){\n                    mymap.fitBounds(lyrVaccines.getBounds());\n                 });\n\n                  lyrManure.on('data:loaded', function(){\n                    mymap.fitBounds(lyrManure.getBounds());\n                 });\n\n\n                lyrCattle.on('data:loaded', function(){\n                    mymap.fitBounds(lyrCattle.getBounds());\n\n                    $(\"#findincid\").click(function(){\n                        incidid = parseInt($(\"#incidid\").val());\n                    });\n                    $(\"#bufferbtn\").click(function(){\n                        bufferval = parseInt($(\"#bufferradius\").val());\n\n                        jsnIncidenceBuffer = turf.buffer(lyrIncidences.toGeoJSON(), bufferval, 'kilometers');\n                        eachIncid = jsnIncidenceBuffer.features[incidid];\n\n                        lyrIncidenceBuffer = L.geoJSON(eachIncid, {style:{color:'black', dashArray:'5,5', fillOpacity:0.3}}).addTo(mymap);\n                        lyrIncidences.bringToFront();\n\n                        searchWithin = turf.polygon(eachIncid.geometry.coordinates);\n\n                        for (var i=0; i<lyrCattle.toGeoJSON().features.length; i++){\n                            var pt = turf.point(lyrCattle.toGeoJSON().features[i].geometry.coordinates,{properties:lyrCattle.toGeoJSON().features[i].properties});\n                                  if (turf.inside(pt, searchWithin) == true){\n                                    points.push(pt);\n                                    buffered_data.push(points[i].properties.properties);\n                                    }\n                                };\n\n                        for (var i=0; i<lyrGoat.toGeoJSON().features.length; i++){\n                            var pt = turf.point(lyrGoat.toGeoJSON().features[i].geometry.coordinates,{properties:lyrGoat.toGeoJSON().features[i].properties});\n                                  if (turf.inside(pt, searchWithin) == true){\n                                    points.push(pt);\n                                    buffered_data.push(points[i].properties.properties);\n                                    }\n\n                            };\n\n                        for (var i=0; i<lyrSheep.toGeoJSON().features.length; i++){\n                            var pt = turf.point(lyrSheep.toGeoJSON().features[i].geometry.coordinates,{properties:lyrSheep.toGeoJSON().features[i].properties});\n                                  if (turf.inside(pt, searchWithin) == true){\n                                    points.push(pt);\n                                    buffered_data.push(points[i].properties.properties);\n                                    }\n\n                            };\n\n                        for (var i=0; i<lyrPoultry.toGeoJSON().features.length; i++){\n                            var pt = turf.point(lyrPoultry.toGeoJSON().features[i].geometry.coordinates,{properties:lyrPoultry.toGeoJSON().features[i].properties});\n                                  if (turf.inside(pt, searchWithin) == true){\n                                    points.push(pt);\n                                    buffered_data.push(points[i].properties.properties)\n                                    }\n\n                        };\n\n\n\n\n                    });\n\n                              $('#sendsms').click(function(){\n                                  $.ajax({\n                                       url: 'http://localhost:8000/sms',\n                                       type: \"POST\",\n                                       dataType: \"json\",\n                                       data: {\"arr\" : JSON.stringify(buffered_data)},\n                                       statusCode: {\n                                         200: function (your_Response_Data) {\n                                          },\n                                          404: function () {\n                                          }\n                                       },\n                                       complete: function (jqXHR, textStatus) {\n                                       }\n                                    });\n\n                          });\n                });\n\n                lyrPopulation.on('data:loaded', function(){\n                    mymap.fitBounds(lyrPopulation.getBounds());\n\n                    jsnIncidenceBuffer = turf.buffer(lyrIncidences.toGeoJSON(), 5, 'kilometers');\n\n                    lyrIncidenceBuffer = L.geoJSON( jsnIncidenceBuffer, {style:{color:'black', dashArray:'5,5', fillOpacity:0}}).addTo(mymap);\n                    lyrIncidences.bringToFront();\n\n                  // need to attach a button here where i can put the id and the buffer distance.\n                  searchWithin = turf.polygon(jsnIncidenceBuffer.features[0].geometry.coordinates);\n\n                  for (var i=0; i<lyrPopulation.toGeoJSON().features.length; i++){\n                    var pt = turf.point(lyrPopulation.toGeoJSON().features[i].geometry.coordinates,{properties:lyrPopulation.toGeoJSON().features[i].properties});\n                          if (turf.inside(pt, searchWithin) == true){\n                            points.push(pt);\n                            }\n\n\n\n                    };\n\n                    mypoints = lyrCattle.toGeoJSON();\n\n\n                    Grid = turf.idw(mypoints,'number', 0.3, 0.3,'kilometers');\n\n                    // L.geoJSON(Grid).addTo(mymap);\n                    choroplethLayer = L.choropleth(Grid, {\n                          valueProperty: 'z',\n                          colors: ['#4575b4','#91bfdb','#e0f3f8','#ffffbf', '#fee090', '#fc8d59', '#d73027'],\n                          steps: 7,\n                          mode: 'q',\n                          style: {\n                            color: '#fff',\n                            weight: 0.1,\n                            fillOpacity: 0.5\n                          }\n                          // onEachFeature: function(feature, layer) {\n                          //   layer.bindPopup(\"Estimated base rent in € for a 3 room apartment \" + feature.properties.z)\n                          // }\n                        }).addTo(mymap);\n                     legend = L.control({\n                          position: 'bottomright'\n                        })\n                        legend.onAdd = function(map) {\n                          var div = L.DomUtil.create('div', 'info legend')\n                          var limits = choroplethLayer.options.limits\n                          var colors = choroplethLayer.options.colors\n                          var labels = []\n                          // Add min & max\n                          div.innerHTML = '<div class=\"labels\"><div class=\"min\">' + limits[0] + '</div> \\\n                                <div class=\"max\">' + limits[limits.length - 1] + '</div></div>'\n                          limits.forEach(function(limit, index) {\n                            labels.push('<li style=\"background-color: ' + colors[index] + '\"></li>')\n                          })\n                          div.innerHTML += '<ul>' + labels.join('') + '</ul>'\n                          return div\n                        }\n                        legend.addTo(mymap)\n\n\n\n                });\n\n                    // searchWithin = turf.featureCollection([\n                    //     turf.polygon(jsnIncidenceBuffer.features[1].geometry.coordinates\n                    //     )\n                    // ]);\n                    // for (var i=0; i<lyrPopulation.toGeoJSON().features.length; i++){\n                  //   var pt = turf.featureCollection([turf.point(lyrPopulation.toGeoJSON().features[i].geometry.coordinates,{properties:lyrPopulation.toGeoJSON().features[i].properties})]);\n                  //   points.push(turf.within(pt, searchWithin));\n\n                  // };\n\n// ********************************************************************************************************************************\n\n                  lyrEvents.on('data:loaded', function(){\n                    mymap.fitBounds(lyrEvents.getBounds());\n                 });\n\n                  lyrFacilities.on('data:loaded', function(){\n                    mymap.fitBounds(lyrFacilities.getBounds());\n                 });\n\n                  lyrMarkets.on('data:loaded', function(){\n                    mymap.fitBounds(lyrMarkets.getBounds());\n                 });\n\n                  lyrCorridors.on('data:loaded', function(){\n                    mymap.fitBounds(lyrCorridors.getBounds());\n\n\n                 });\n\n                  lyrSubcounties.on('data:loaded', function(){\n                    mymap.fitBounds(lyrSubcounties.getBounds());\n                 });\n\n                  lyrTowns.on('data:loaded', function(){\n//                    mymap.fitBounds(lyrTowns.getBounds());\n                   lyrMarkerCluster.addLayer(lyrTowns);\n                    lyrMarkerCluster.addTo(mymap);\n                 });\n\n\n\n\n\n\n// ******************jquery event handlers ***********\n\n  $(\"#btnLocate\").click(function(){\n                    mymap.locate();\n\n\n                });\n\n\n\n\n\n    });  // end of document.on.load() function\n\n\n\n\n\n// ***************corridors Functions********************\n\n              function styleCorridors(json){\n                  var att = json.properties;\n\n                      if (att.status == 'dormant'){\n                      return {color: 'grey',dashArray:\"5,5\"};\n                          }else{\n                            return {color: 'black'};\n                          }\n                      };\n\n\n\n\n\n             function processCorridors(json, lyr){\n                 var att = json.properties;\n                 // console.log(att);\n                 lyr.bindTooltip(\"status\");\n\n             };\n\n             function returnCorridorLineByID(id){\n                var arLayers = lyrCorridors.getLayers();\n                for (i=0; i<arLayers.length-1; i++){\n                    var featureID = arLayers[i].id;\n                    // console.log(featureID);\n                    if (featureID == id){\n                        return arLayers[i]\n                    }\n                }\n                return false;\n             }\n\n\n             $('#btnFindCorridor').click(function(){\n                var id = $(\"#txtFindCorridor\").val();\n                var lyr = returnCorridorLineByID(id);\n\n                if(lyr){\n                    if(lyrSearch){\n                        lyrSearch.remove();\n                    }\n                    lyrSearch = L.geoJSON(lyr.toGeoJSON(), {style:{color : 'red', weight:10, opacity: 0.5}}).addTo(mymap);\n                    mymap.fitBounds(lyr.getBounds().pad(1));\n                    var att = lyr.feature.properties;\n                    $(\"#divCorridorData\").html('worked');\n                }else{\n                    $(\"#divCorridorError\").html(\"***id not found***\");         }\n             });\n\n\n             function filterCorridor(json){\n                   var att=json.properties;\n                   var optFilter = $(\"input[name=fltCorridor]:checked\").val();\n                   if (optFilter == 'ALL'){\n                       return true;\n                   }else{\n                       return (att.status==optFilter);\n                   }\n\n               }\n\n\n               $(\"input[name=fltCorridor]\").click(function(){\n                   arCorridorIDs=[];\n                   lyrCorridors.refresh();\n\n               });\n\n\n\n//  ***********incidencefunctions****************\n              function returnIncidenceMarker(json, latlng){\n                var att = json.properties;\n\n                return L.marker(latlng, {icon:icnincidence}).bindTooltip(\"<h4>disease reported: <br>\"+ att.disease);\n                };\n\n//               function returnIncidenceMarker(json, latlng){\n//                 var att = json.properties;\n\n//                 // console.log(att.date_reported.getMonth());\n\n//                 return L.circleMarker(latlng, {radius:10, color:'brown'}).bindTooltip(\"<h4>purpose: <br>\"+ att.sub_county);\n\n// //                var jsnBuffer = turf.buffer(json, 20,'kilomiters');\n// //                var lyrBuffer = L.geoJSON(jsnBuffer, {style:{color:'red', dashArray:'5.5'}});\n// //                lyrIncidenceBuffer.addLayer(lyrBuffer);\n// //\n//                 }\n\n\n\n// **************************events Functions******************************\n\n\n                   function returnEventMarker(json, latlng){\n                        var att = json.properties;\n\n                        return L.marker(latlng, {icon:icnevent}).bindTooltip(\"<h4>purpose: <br>\"+ att.purpose +\"<h3> Date: </h3>\"+ att.date);\n                        };\n\n//                 function returnEventMarker(json, latlng){\n//                     var att = json.properties;\n// //                      if(att.animal == 'Cattle'){\n// //                          var clrCatt = 'dippink';\n// //                        }\n//                 return L.circleMarker(latlng, {radius:10, color:'brown'}).bindTooltip(\"<h4>purpose: <br>\"+ att.purpose);\n// //\n//                 }\n\n\n               function filterEvent(json){\n                   var att=json.properties;\n                   var optFilter = $(\"input[name=fltEvent]:checked\").val();\n                   if (optFilter == 'ALL'){\n                       return true;\n                   }else{\n                       return (att.purpose==optFilter);\n                   }\n\n               }\n\n               $(\"input[name=fltEvent]\").click(function(){\n                   arEventIDs=[];\n                   lyrEvents.refresh();\n\n               });\n\n\n\n\n\n\n// ********************Facility functions*****************************\n\n              function returnFacilityMarker(json, latlng){\n                var att = json.properties;\n\n                return L.marker(latlng, {icon:icnfacility}).bindTooltip(\"<h4>current status : <br>\"+ att.status);\n                };\n\n//              function returnFacilityMarker(json, latlng){\n//                     var att = json.properties;\n// //                      if(att.animal == 'Cattle'){\n// //                          var clrCatt = 'dippink';\n// //                        }\n//                 return L.circleMarker(latlng, {radius:10, color:'brown'}).bindTooltip(\"<h4>current status : <br>\"+ att.status);\n// //\n//                 }\n\n\n               function filterFacility(json){\n                   var att=json.properties;\n                   var optFilter = $(\"input[name=fltFacility]:checked\").val();\n                   if (optFilter == 'ALL'){\n                       return true;\n                   }else{\n                       return (att.pupose==optFilter);\n                   }\n\n               }\n\n               $(\"input[name=fltFacility]\").click(function(){\n                   arFacilityIDs=[];\n                   lyrFacilities.refresh();\n\n               });\n\n\n\n\n\n\n//***************************Population Functions*************************\n\n              function returnCattleMarker(json, latlng){\n                var att = json.properties;\n\n                return L.marker(latlng, {icon:icnCow});\n                };\n\n                function returnPoultryMarker(json, latlng){\n                var att = json.properties;\n\n                return L.marker(latlng, {icon:icnLAMbird});\n                };\n\n                function returnSheepMarker(json, latlng){\n                var att = json.properties;\n\n                return L.marker(latlng, {icon:icnsheep});\n                };\n\n                function returnGoatMarker(json, latlng){\n                var att = json.properties;\n\n                return L.marker(latlng, {icon:icngoat});\n                };\n\n                function returnMarketMarker(json, latlng){\n                var att = json.properties;\n\n                return L.marker(latlng, {icon:icnmkt});\n                };\n\n\n\n               function filterPopulation(json){\n                   var att=json.properties;\n                   var optFilter = $(\"input[name=fltPopulation]:checked\").val();\n                   if (optFilter == 'ALL'){\n                       return true;\n                   }else{\n                       return (att.animal==optFilter);\n                   }\n\n               }\n\n               $(\"input[name=fltPopulation]\").click(function(){\n                   arPopulationIDs=[];\n                   lyrPopulation.refresh();\n\n               });\n// *************************************\n\n              $(\"#btnLinearProjects\").click(function(){\n               $(\"#lgndLinearProjectsDetail\").toggle();\n            });\n\n//*********************general functions **********************\n\n\n            function LatLngToArrayString(ll) {\n                // console.log(ll);\n                return \"[\"+ll.lat.toFixed(5)+\", \"+ll.lng.toFixed(5)+\"]\";\n            };\n\n            function returnTownMarker(json, latlng){\n                var att = json.properties;\n                return L.circleMarker(latlng, {radius:10, color:'blue'}).bindTooltip(\"<h4>Name: <br>\"+ att.town_name);\n            };\n\n\n\n               function returnLayerByAttribute(lyr,att,val) {\n                  var arLayers = lyr.getLayers();\n                    for (i=0;i<arLayers.length-1;i++) {\n                       var ftrVal = arLayers[i].feature.properties[att];\n                         if (ftrVal==val) {\n                    return arLayers[i];\n                }\n            }\n            return false;\n        }\n\n               $(\"#btnFindProject\").click(function(){\n                var val = $(\"#txtFindProject\").val();\n                var lyr = returnLayerByAttribute(lyrCorridors,'id',val);\n                if (lyr) {\n                    if (lyrSearch) {\n                        lyrSearch.remove();\n                    }\n                    lyrSearch = L.geoJSON(lyr.toGeoJSON(), {style:{color:'red', weight:10, opacity:0.5}}).addTo(mymap);\n                    mymap.fitBounds(lyr.getBounds().pad(1));\n                    var att = lyr.features;\n                    $(\"#divProjectData\").html(\"<h4 class='text-center'>Attributes</h4><h5>Type: \"+att.properties.number+\"</h5><h5>ROW width: \"+att.properties.animal+ \"m </h5>\");\n                    $(\"#divProjectError\").html(\"\");\n                } else {\n                    $(\"#divProjectError\").html(\"**** Project ID not found ****\");\n                }\n            });\n\n\n\n\n            function stlSubcounties(json){\n                var att = json.properties;\n                switch (att.name){\n                  case 'Tetu':\n                    return {\n                      weight: 0,\n                      color: 'purple',\n                      fillOpacity: 0.7\n                    };\n                    break;\n                  case 'Othaya':\n                    return {\n                      weight: 0,\n                      color: 'purple',\n                      fillOpacity: 0.7\n                    };\n                    break;\n                  case 'Town':\n                    return {\n                      weight: 0,\n                      color: 'brown',\n                      fillOpacity: 0.7\n                    };\n                    break;\n                  case 'Kieni-East':\n                    return {\n                      weight: 0,\n                      color: 'orange',\n                      fillOpacity: 0.7\n                    };\n                    break;\n                  case 'Kieni-West':\n                    return {\n                      weight: 0,\n                      color: 'grey',\n                      fillOpacity: 0.7\n                    };\n                    break;\n                  case 'Mukurweini':\n                  return {\n                    weight: 0,\n                    color: 'beige',\n                    fillOpacity: 0.7\n                  };\n                  break;\n                 case 'Abadare-forest':\n                    return {\n                      weight: 0,\n                      color: 'green',\n                      fillOpacity: 0.7\n                    };\n                    break;\n                case 'Mathira':\n                    return {\n                      weight: 0,\n                      color: 'blue',\n                      fillOpacity: 0.7\n                    };\n                    break;\n                  case 'Mtkenya-Forest':\n                    return {\n                      weight: 0,\n                      color: 'green',\n                      fillOpacity: 0.7\n                    };\n                    break;\n\n                 }};\n\n            function prcssSubcounties(json){\n                var att =json.properties;\n                lyr.bindTooltip(\"<h4> oooe \"+att.name+\"</h4>\")\n            }\n            function filterSubcounties(json){\n                var att = json.properties;\n\n            }\n\n\n                function returnLength(arLL) {\n                   var total=0;\n                    for (var i=1;i<arLL.length;i++) {\n                        total = total + arLL[i-1].distanceTo(arLL[i]);\n                          }\n                        return total;\n                   }\n\n             function returnMultiLength(arArLL) {\n                var total=0;\n\n                for (var i=0; i<arArLL.length;i++) {\n                    total = total + returnLength(arArLL[i]);\n                }\n\n                return total;\n            }\n\n            function returnClosestlayer(lyrGroup, llRef) {\n                var arLyrs = lyrGroup.getLayers();\n                var nearest = L.GeometryUtil.closestLayer(mymap, arLyrs, llRef);\n                nearest.distance = llRef.distanceTo(nearest.latlng);\n                nearest.bearing = L.GeometryUtil.bearing(llRef, nearest.latlng);\n                if (nearest.bearing<0){\n                    nearest.bearing = nearest.bearing+360;\n                }\n                nearest.att = nearest.layer.feature.properties;\n                return nearest;\n            }\n\n        </script>\n    </body>\n</html>\n",
+			"file": "templates/liveapp/portal.html",
+			"file_size": 59754,
+			"file_write_time": 131570669408704886,
+			"settings":
+			{
+				"buffer_size": 58276,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/deryq/Desktop/newproject/new/image/imagenet/classify_image.py",
+			"settings":
+			{
+				"buffer_size": 8944,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<!DOCTYPE html>\n{% load staticfiles %}\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>maps</title>\n    <link rel=\"stylesheet\" href=\"{% static 'src/leaflet.css' %}\">\n    <link rel=\"stylesheet\" href=\"{% static 'src/jquery-ui.min.css' %}\">\n    <link rel=\"stylesheet\" href=\"{% static 'src/css/bootstrap.css' %}\">\n\n    <script src=\"{% static 'src/leaflet-src.js' %}\"></script>\n    <script src=\"{% static 'src/jquery-3.2.0.min.js' %}\"></script>\n    <script src=\"{% static 'src/jquery-ui.min.js' %}\"></script>\n    <script src=\"{% static 'src/choropleth.js' %}\"></script>\n    <script src=\"{% static 'src/turf.min.js' %}\"></script>\n    <script src=\"{% static 'src/plugins/leaflet.ajax.min.js' %}\"></script>\n    <script src=\"{% static 'src/choropleth.js' %}\"></script>\n    <style>\n            #mapdiv {\n                height:100vh;\n            }\n    </style>\n</head>\n<body>\n\n <div id=\"mapdiv\" class=\"col-md-12\"></div>\n <script>\n var map;\n var lryOsm;\n\n var lyrImagery;\n var lyrTopo;\n var objBasemaps;\n var lyrCattle;\n var lyrSubcounties;\n var lyrGoat;\n var lyrSheep;\n var lyrPoultry;\n var CattleLayer;\n  var cattlepoints;\n  var Grid;\n\n  var legend;\n\n  $(document).ready(function(){\n              map = L.map('mapdiv', {center:[-0.3978268, 36.9612328], zoom:12, zoomControl:false, attributionControl:false});\n\n             lyrOSM = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);\n\n             // lyrSubcounties = L.geoJSON.ajax('http://localhost:8000/subcounties_data').addTo(map);\n              lyrSubcounties = L.geoJSON.ajax('http://localhost:8000/subcounties_data').addTo(map);\n             lyrCattle = L.geoJSON.ajax('http://localhost:8000/cattle_data').addTo(map);\n             lyrSheep = L.geoJSON.ajax('http://localhost:8000/sheep_data').addTo(map);\n             lyrGoat = L.geoJSON.ajax('http://localhost:8000/goat_data').addTo(map);\n             lyrPoultry = L.geoJSON.ajax('http://localhost:8000/poultry_data').addTo(map);\n\n\n              lyrCattle.on('data:loaded', function(){\n                      cattlepoints = lyrCattle.toGeoJSON();\n\n                       Grid = turf.idw(cattlepoints,'number_of_animals', 0.3, 0.3,'kilometers');\n                       CattleLayer = L.choropleth(Grid, {\n                          valueProperty: 'z',\n                          colors: ['#4575b4','#91bfdb','#e0f3f8','#ffffbf', '#fee090', '#fc8d59', '#d73027'],\n                          steps: 7,\n                          mode: 'q',\n                          style: {\n                            \n                            color: '#fff',\n                            weight: 0.1,\n                            fillOpacity: 0.5\n                          },\n                          onEachFeature: function(feature, layer) {\n                            layer.bindPopup(\"Estimated number of animals in this area is 107\" )\n                          }\n                        }).addTo(map);\n                     legend = L.control({\n                        position: 'bottomright'\n                      })\n                      legend = L.control({\n                          position: 'bottomright'\n                        })\n                        legend.onAdd = function(map) {\n                              var div = L.DomUtil.create('div', 'info legend')\n                              var limits = CattleLayer.options.limits\n                              var colors = CattleLayer.options.colors\n                              var labels = []\n                              // Add min & max\n                              div.innerHTML = '<div class=\"labels\"><div class=\"min\">' + limits[0] + '</div> \\\n                              <div class=\"max\">' + limits[limits.length - 1] + '</div></div>'\n                              limits.forEach(function(limit, index) {\n                                labels.push('<li style=\"background-color: ' + colors[index] + '\"></li>')\n                              })\n                              div.innerHTML += '<ul>' + labels.join('') + '</ul>'\n                              return div\n                            }\n                            legend.addTo(map)\n\n                            });\n\n\n\n\n                // choroplethLayer = L.choropleth(Grid, {\n                //       valueProperty: 'z',\n                //       colors: ['#4575b4','#91bfdb','#e0f3f8','#ffffbf', '#fee090', '#fc8d59', '#d73027'],\n                //       steps: 7,\n                //       mode: 'q',\n                //       style: {\n                //         color: '#fff',\n                //         weight: 0.1,\n                //         fillOpacity: 0.5\n                //       }}).addTo(map);\n                 // legend = L.control({\n                 //      position: 'bottomright'\n                 //    })\n                 //    legend.onAdd = function(map) {\n                 //      var div = L.DomUtil.create('div', 'info legend')\n                 //      var limits = choroplethLayer.options.limits\n                 //      var colors = choroplethLayer.options.colors\n                 //      var labels = []\n                 //      // Add min & max\n                 //      div.innerHTML = '<div class=\"labels\"><div class=\"min\">' + limits[0] + '</div> \\\n                 //            <div class=\"max\">' + limits[limits.length - 1] + '</div></div>'\n                 //      limits.forEach(function(limit, index) {\n                 //        labels.push('<li style=\"background-color: ' + colors[index] + '\"></li>')\n                 //      })\n                 //      div.innerHTML += '<ul>' + labels.join('') + '</ul>'\n                 //      return div\n                 //    }\n                 //    legend.addTo(map)\n\n              objBasemaps = {\n                    \"Open Street Maps\" : lyrOSM,\n\n                  };\n\n\n              ObjOverlays = {\n                              // \"sub-counties\" : lyrSubcounties,\n                              \"Subcounties\": lyrSubcounties,\n                              \"cattle\" : lyrCattle,\n                              \"goats\" : lyrGoat,\n                              \"sheep\" : lyrSheep,\n                              \"poultry\" : lyrPoultry,\n                              \"Subcounties\": lyrSubcounties\n\n\n\n                            };\n\nctlLayers = L.control.layers(objBasemaps, ObjOverlays).addTo(map);\n\n\n });\n </script>\n\n</body>\n</html>\n",
+			"file": "templates/liveapp/maps.html",
+			"file_size": 6476,
+			"file_write_time": 131571068151161394,
+			"settings":
+			{
+				"buffer_size": 6347,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/deryq/Desktop/miniprojects/hack/begin.py",
+			"settings":
+			{
+				"buffer_size": 12,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/deryq/proj/softmax.py",
+			"settings":
+			{
+				"buffer_size": 2998,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "liveapp/urls.py",
+			"settings":
+			{
+				"buffer_size": 1560,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "liveapp/views.py",
+			"settings":
+			{
+				"buffer_size": 6743,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "liveapp/models.py",
+			"settings":
+			{
+				"buffer_size": 13139,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/User/python27.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Anaconda Python Builder",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				],
+				[
+					"Packages/User/python27.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/User/python27.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 129.0,
+		"last_filter": "Package Control: insta",
+		"selected_items":
+		[
+			[
+				"Package Control: insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"install package",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 549.0
+	},
+	"console":
+	{
+		"height": 62.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/deryq/imp/livestock",
+		"/C/Users/deryq/imp/livestock/livestock",
+		"/C/Users/deryq/imp/livestock/templates",
+		"/C/Users/deryq/imp/livestock/templates/liveapp"
+	],
+	"file_history":
+	[
+		"/C/Users/deryq/AppData/Local/Temp/Temp1_Legend-Pt2-Solution.zip/index.html",
+		"/C/Users/deryq/AppData/Local/Temp/Temp1_Lecture40-Solution.zip/index.html",
+		"/C/Users/deryq/AppData/Local/Temp/Temp1_Lecture39-Solution.zip/index.html",
+		"/C/Users/deryq/Downloads/Compressed/django-by-example-book-master/django-by-example-book-master/chap_4_social_website/bookmarks/account/templates/base.html",
+		"/C/Users/deryq/Downloads/Compressed/django-by-example-book-master/django-by-example-book-master/chap_4_social_website/bookmarks/account/views.py",
+		"/C/Users/deryq/imp/livestock/templates/green/incidence_form.html",
+		"/C/Users/deryq/Desktop/agrismart-master/agrismart-master/templates/temp/incident.html",
+		"/C/Users/deryq/imp/livestock/liveapp/forms.py",
+		"/C/Users/deryq/imp/livestock/templates/green/slidebar.html",
+		"/C/Users/deryq/imp/livestock/livestock/settings.py",
+		"/C/Users/deryq/imp/livestock/templates/liveapp/portal.html",
+		"/C/Users/deryq/imp/livestock/templates/green/login.html",
+		"/C/Users/deryq/imp/livestock/liveapp/urls.py",
+		"/C/Users/deryq/imp/livestock/templates/green/index.html",
+		"/C/Users/deryq/imp/livestock/templates/liveapp/maps.html",
+		"/C/Users/deryq/Desktop/agrismart-master/agrismart-master/templates/smart/land_portal.html",
+		"/C/Users/deryq/Desktop/agrismart-master/agrismart-master/templates/smart/map.html",
+		"/C/Users/deryq/Desktop/agrismart-master/agrismart-master/templates/temp/portal.html",
+		"/C/Users/deryq/Desktop/agrismart-master/agrismart-master/templates/temp/base.html",
+		"/C/Users/deryq/Desktop/agrismart-master/agrismart-master/templates/temp/incidence.html",
+		"/C/Users/deryq/imp/livestock/liveapp/views.py",
+		"/C/Users/deryq/Downloads/Compressed/django-by-example-book-master/django-by-example-book-master/chap_4_social_website/bookmarks/account/templates/account/login.html",
+		"/C/Users/deryq/Downloads/Compressed/django-by-example-book-master/django-by-example-book-master/chap_4_social_website/bookmarks/account/templates/account/dashboard.html",
+		"/C/Users/deryq/Desktop/agrismart-master/agrismart-master/dss/models.py",
+		"/C/Users/deryq/Desktop/agrismart-master/agrismart-master/dss/urls.py",
+		"/C/Users/deryq/Desktop/agrismart-master/agrismart-master/dss/admin.py",
+		"/C/Users/deryq/Desktop/agrismart-master/agrismart-master/templates/temp/login.html",
+		"/C/Users/deryq/imp/livestock/templates/liveapp/home.html",
+		"/C/Users/deryq/Desktop/agrismart-master/agrismart-master/dss/views.py",
+		"/C/Users/deryq/Desktop/agrismart-master/agrismart-master/dss/forms.py",
+		"/C/Users/deryq/imp/livestock/liveapp/admin.py",
+		"/C/Users/deryq/imp/livestock/templates/green/register.html",
+		"/C/Users/deryq/imp/livestock/liveapp/models.py",
+		"/C/Users/deryq/Desktop/agrismart-master/agrismart-master/templates/temp/register.html",
+		"/E/doris/rules.txt",
+		"/F/Dee/rules.txt",
+		"/C/Users/deryq/Desktop/refs.txt",
+		"/C/Users/deryq/Desktop/agrismart-master/agrismart-master/templates/temp/registration.html",
+		"/C/Users/deryq/Desktop/IMPORTANT LINKS.txt",
+		"/C/xampp/php/php.ini-development",
+		"/C/xampp/htdocs/mapbender3/app/config/parameters.yml",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/C/Windows/System32/drivers/etc/hosts.ics",
+		"/C/xampp/apache/conf/extra/httpd-vhosts.conf",
+		"/C/Users/deryq/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/C/Users/deryq/AppData/Roaming/Sublime Text 3/Packages/User/Anaconda.sublime-settings",
+		"/C/xampp/htdocs/myapp/index.html.txt",
+		"/home/deryq/project/livestock/templates/liveapp/testsms.py",
+		"/home/deryq/Desktop/test.py",
+		"/home/deryq/project/livestock/liveapp/serializers.py",
+		"/home/deryq/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
+		"/home/deryq/project/livestock/templates/liveapp/charts.html",
+		"/home/deryq/project/livestock/livestock/urls.py",
+		"/home/deryq/project/livestock/liveapp/admin.py",
+		"/home/deryq/project/livestock/liveapp/forms.py",
+		"/home/deryq/.config/sublime-text-3/Packages/User/python27.sublime-build",
+		"/home/deryq/project/livestock/liveapp/models.py",
+		"/home/deryq/project/livestock/templates/liveapp/portal.html",
+		"/home/deryq/project/livestock/livestock/settings.py",
+		"/home/deryq/project/livestock/liveapp/views.py",
+		"/home/deryq/project/livestock/liveapp/urls.py"
+	],
+	"find":
+	{
+		"height": 86.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"locate",
+			"btnLocate",
+			"returncorr",
+			"returnIn",
+			"dll",
+			"tile"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "templates/green/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10059,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6054,
+								6054
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 3150.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "templates/liveapp/portal.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 58276,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								41011,
+								41011
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 26450.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/deryq/Desktop/newproject/new/image/imagenet/classify_image.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8944,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2511,
+								2511
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1557.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "templates/liveapp/maps.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6347,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2523,
+								2523
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1199.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/deryq/Desktop/miniprojects/hack/begin.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/Users/deryq/proj/softmax.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2998,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								417,
+								417
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1732.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "liveapp/urls.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1560,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								32,
+								32
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "liveapp/views.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6743,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6132,
+								5958
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4617.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "liveapp/models.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13139,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6384,
+								6384
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5093.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 40.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.941037735849,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 62.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "livestock.sublime-project",
+	"replace":
+	{
+		"height": 58.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 259.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

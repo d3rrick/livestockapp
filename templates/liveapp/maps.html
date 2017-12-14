@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>maps</title>
+    <link rel="stylesheet" href="{% static 'src/leaflet.css' %}">
+    <link rel="stylesheet" href="{% static 'src/jquery-ui.min.css' %}">
+    <link rel="stylesheet" href="{% static 'src/css/bootstrap.css' %}">
+
+    <script src="{% static 'src/leaflet-src.js' %}"></script>
+    <script src="{% static 'src/jquery-3.2.0.min.js' %}"></script>
+    <script src="{% static 'src/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'src/choropleth.js' %}"></script>
+    <script src="{% static 'src/turf.min.js' %}"></script>
+    <script src="{% static 'src/plugins/leaflet.ajax.min.js' %}"></script>
+    <script src="{% static 'src/choropleth.js' %}"></script>
+    <style>
+            #mapdiv {
+                height:100vh;
+            }
+    </style>
+</head>
+<body>
+
+ <div id="mapdiv" class="col-md-12"></div>
+ <script>
+ var map;
+ var lryOsm;
+
+ var lyrImagery;
+ var lyrTopo;
+ var objBasemaps;
+ var lyrCattle;
+ var lyrSubcounties;
+ var lyrGoat;
+ var lyrSheep;
+ var lyrPoultry;
+ var CattleLayer;
+  var cattlepoints;
+  var Grid;
+
+  var legend;
+
+  $(document).ready(function(){
+              map = L.map('mapdiv', {center:[-0.3978268, 36.9612328], zoom:12, zoomControl:false, attributionControl:false});
+
+             lyrOSM = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
+
+             // lyrSubcounties = L.geoJSON.ajax('http://localhost:8000/subcounties_data').addTo(map);
+              lyrSubcounties = L.geoJSON.ajax('http://localhost:8000/subcounties_data').addTo(map);
+             lyrCattle = L.geoJSON.ajax('http://localhost:8000/cattle_data').addTo(map);
+             lyrSheep = L.geoJSON.ajax('http://localhost:8000/sheep_data').addTo(map);
+             lyrGoat = L.geoJSON.ajax('http://localhost:8000/goat_data').addTo(map);
+             lyrPoultry = L.geoJSON.ajax('http://localhost:8000/poultry_data').addTo(map);
+
+
+              lyrCattle.on('data:loaded', function(){
+                      cattlepoints = lyrCattle.toGeoJSON();
+
+                       Grid = turf.idw(cattlepoints,'number_of_animals', 0.3, 0.3,'kilometers');
+                       CattleLayer = L.choropleth(Grid, {
+                          valueProperty: 'z',
+                          colors: ['#4575b4','#91bfdb','#e0f3f8','#ffffbf', '#fee090', '#fc8d59', '#d73027'],
+                          steps: 7,
+                          mode: 'q',
+                          style: {
+                            color: '#fff',
+                            weight: 0.1,
+                            fillOpacity: 0.5
+                          },
+                          onEachFeature: function(feature, layer) {
+                            layer.bindPopup("Estimated number of animals in this area is 107" )
+                          }
+                        }).addTo(map);
+                     legend = L.control({
+                        position: 'bottomright'
+                      })
+                      legend = L.control({
+                          position: 'bottomright'
+                        })
+                        legend.onAdd = function(map) {
+                              var div = L.DomUtil.create('div', 'info legend')
+                              var limits = CattleLayer.options.limits
+                              var colors = CattleLayer.options.colors
+                              var labels = []
+                              // Add min & max
+                              div.innerHTML = '<div class="labels"><div class="min">' + limits[0] + '</div> \
+                              <div class="max">' + limits[limits.length - 1] + '</div></div>'
+                              limits.forEach(function(limit, index) {
+                                labels.push('<li style="background-color: ' + colors[index] + '"></li>')
+                              })
+                              div.innerHTML += '<ul>' + labels.join('') + '</ul>'
+                              return div
+                            }
+                            legend.addTo(map)
+
+                            });
+
+
+
+
+                // choroplethLayer = L.choropleth(Grid, {
+                //       valueProperty: 'z',
+                //       colors: ['#4575b4','#91bfdb','#e0f3f8','#ffffbf', '#fee090', '#fc8d59', '#d73027'],
+                //       steps: 7,
+                //       mode: 'q',
+                //       style: {
+                //         color: '#fff',
+                //         weight: 0.1,
+                //         fillOpacity: 0.5
+                //       }}).addTo(map);
+                 // legend = L.control({
+                 //      position: 'bottomright'
+                 //    })
+                 //    legend.onAdd = function(map) {
+                 //      var div = L.DomUtil.create('div', 'info legend')
+                 //      var limits = choroplethLayer.options.limits
+                 //      var colors = choroplethLayer.options.colors
+                 //      var labels = []
+                 //      // Add min & max
+                 //      div.innerHTML = '<div class="labels"><div class="min">' + limits[0] + '</div> \
+                 //            <div class="max">' + limits[limits.length - 1] + '</div></div>'
+                 //      limits.forEach(function(limit, index) {
+                 //        labels.push('<li style="background-color: ' + colors[index] + '"></li>')
+                 //      })
+                 //      div.innerHTML += '<ul>' + labels.join('') + '</ul>'
+                 //      return div
+                 //    }
+                 //    legend.addTo(map)
+
+              objBasemaps = {
+                    "Open Street Maps" : lyrOSM,
+
+                  };
+
+
+              ObjOverlays = {
+                              // "sub-counties" : lyrSubcounties,
+                              "Subcounties": lyrSubcounties,
+                              "cattle" : lyrCattle,
+                              "goats" : lyrGoat,
+                              "sheep" : lyrSheep,
+                              "poultry" : lyrPoultry,
+                              "Subcounties": lyrSubcounties
+
+
+
+                            };
+
+ctlLayers = L.control.layers(objBasemaps, ObjOverlays).addTo(map);
+
+
+ });
+ </script>
+
+</body>
+</html>
