@@ -1,7 +1,7 @@
 # Livestock decision support system
 
 ## Description
-The LDSS aids in management of livestock information in Nyeri county, the livestock agency can report various diseases on ivestock, such data is used to predict diseases based on climatic conditions around the year, implements AfricasTalking to warn farmers of incidences reported near them and creation of an api to make data reusable in multiple applications.
+The LDSS aids in management of livestock information in Nyeri county, the livestock agency can report various diseases on livestock, such data is used to predict diseases based on climatic conditions around the year, implements AfricasTalking to warn farmers of incidences reported near them and creation of an api to make data reusable in multiple applications.
 
 - Created on, May 19th 2018
 
